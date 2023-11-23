@@ -1,0 +1,24 @@
+{
+	"include": [
+		"../node_modules/cypress",
+		"*/*.ts"
+	],
+	"compilerOptions": {
+		"baseUrl": "..",
+		"paths": {
+			"@api/*": [
+				"./src/api/*"
+			],
+			"@models/*": [
+				"./src/models/*"
+			]
+		},
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"types": [
+			"cypress",
+			"@4tw/cypress-drag-drop",
+			"cypress-file-upload"
+		]
+	}
+}

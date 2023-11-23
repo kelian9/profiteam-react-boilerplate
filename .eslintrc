@@ -1,0 +1,175 @@
+{
+	// Настройки проекта
+	"env": {
+		// Проект для браузера
+		"browser": true,
+		// Включаем возможности ES6
+		"es6": true,
+		// Добавляем возможности ES2017
+		"es2017": true
+	},
+	// Наборы правил
+	"extends": [
+		// Базовый набор правил eslint
+		//		"eslint:recommended",
+		// Базовые правила для TypeScript
+		"plugin:@typescript-eslint/recommended",
+		// Правила TS, требующие инфо о типах
+		"plugin:@typescript-eslint/recommended-requiring-type-checking",
+		"plugin:prettier/recommended"
+	],
+	// Движок парсинга
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		// Движку нужен проект TS для правил с типами
+		"project": "./tsconfig.json",
+		"jsx": true
+	},
+	// Плагин с наборами правил для TypeScript и для React
+	"plugins": [
+		"@typescript-eslint",
+		"react",
+		"prettier"
+	],
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	},
+	"rules": {
+		// Блок выключенных правил
+		"@typescript-eslint/explicit-function-return-type": "off",
+		// TS по умолчанию рассчитывает returntype
+		"@typescript-eslint/no-empty-interface": "off",
+		// Для контейнеров нужны пустые интерфейсы, т.к. возможно измение-расширение ф-ности
+		"@typescript-eslint/prefer-regexp-exec": "off",
+		"@typescript-eslint/await-thenable": "off",
+		"@typescript-eslint/no-unsafe-call": "off",
+		"@typescript-eslint/no-floating-promises": "off",
+		"@typescript-eslint/restrict-plus-operands": "off",
+		"@typescript-eslint/no-unsafe-return": "off",
+		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"@typescript-eslint/restrict-template-expressions": "off",
+		"@typescript-eslint/no-extra-semi": "off",
+		"@typescript-eslint/naming-convention": "off",
+		"@typescript-eslint/ban-ts-comment": "off",
+		"@typescript-eslint/no-implied-eval": "off",
+		"@typescript-eslint/no-unsafe-assignment": "off",
+		"@typescript-eslint/no-unsafe-member-access": "off",
+		"@typescript-eslint/ban-types": "off",
+		// Блок включаемых правил
+		"@typescript-eslint/no-explicit-any": "off",
+		"@typescript-eslint/no-non-null-assertion": "error",
+		"@typescript-eslint/no-use-before-define": "error",
+		"@typescript-eslint/no-unused-vars": [
+			"error",
+			{
+				"args": "after-used"
+			}
+		],
+		"eqeqeq": [
+			"error",
+			"always",
+			{
+				"null": "ignore"
+			}
+		],
+		"quotes": [
+			"error",
+			"single"
+		],
+		//        "indent": ["error", 4, { "SwitchCase": 1 }],
+		// "no-console": [
+		//     "warn",
+		//     {
+		//         "allow": [
+		//             "warn",
+		//             "error"
+		//         ]
+		//     }
+		// ],
+		"dot-location": [
+			"error",
+			"property"
+		],
+		"no-void": "error",
+		"no-var": "error",
+		"radix": "error",
+		"max-len": [
+			"error",
+			{
+				"code": 120
+			}
+		],
+		"react/no-access-state-in-setstate": "error",
+		"react/jsx-uses-vars": "error",
+		"react/jsx-uses-react": "error",
+		"react/destructuring-assignment": "error",
+		"react/no-did-mount-set-state": "error",
+		"react/no-did-update-set-state": "error",
+		"react/no-direct-mutation-state": "error",
+		// "react/no-multi-comp": "error",
+		"react/no-render-return-value": "error",
+		"react/no-this-in-sfc": "error",
+		"react/prefer-es6-class": [
+			"error",
+			"always"
+		],
+		"react/react-in-jsx-scope": "error",
+		"react/require-render-return": "error",
+		"react/no-unused-state": "error",
+		"react/jsx-boolean-value": "error",
+		// пропы с булевыми значениями не нуждаются в указании значения true
+		"react/jsx-closing-tag-location": "error",
+		// закрывающий тег должен быть с отступом как у открывающего
+		"react/jsx-closing-bracket-location": [
+			"error",
+			{
+				"nonEmpty": "tag-aligned",
+				"selfClosing": "tag-aligned"
+			}
+		],
+		"react/jsx-curly-brace-presence": [
+			"error",
+			{
+				"props": "never",
+				"children": "never"
+			}
+		],
+		// для пропов, которые могут быть заданы строкой, ={} нельзя использовать
+		"react/jsx-equals-spacing": [
+			"error",
+			"never"
+		],
+		// Запрещает пробелы между пропом и его значением - верно prop={}
+		"react/jsx-first-prop-new-line": [
+			"error",
+			"multiline"
+		],
+		// если пропы идут по многострочному формату, то каждый с новой строки
+		//        "react/jsx-max-props-per-line": ["warn", { "maximum": 1 }], // максимум пропов на строку - 1
+		"react/jsx-fragments": [
+			"error",
+			"syntax"
+		],
+		// <></> вместо React.Fragment. В противном случае нужно использовать нормальный элемент
+		"react/jsx-no-script-url": "error",
+		"react/jsx-props-no-multi-spaces": "error",
+		"react/jsx-tag-spacing": "error",
+		"react/jsx-sort-props": [
+			"error",
+			{
+				"callbacksLast": true,
+				"shorthandFirst": true,
+				"noSortAlphabetically": true,
+				"reservedFirst": true
+			}
+		],
+		"prettier/prettier": [
+			"error",
+			{
+				"endOfLine": "auto"
+			}
+		]
+	}
+}
