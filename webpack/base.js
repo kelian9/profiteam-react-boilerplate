@@ -9,7 +9,6 @@ module.exports = {
 	entry: "./src/index.tsx",
 	resolve: {
 		alias: {
-			"@common": path.resolve(__dirname, "../src/common"),
 			"@slices": path.resolve(__dirname, "../src/store/slices"),
 			"@store": path.resolve(__dirname, "../src/store"),
 			"@enums": path.resolve(__dirname, "../src/models/enums"),
@@ -20,23 +19,24 @@ module.exports = {
 			"@models": path.resolve(__dirname, "../src/models"),
 			"@utils": path.resolve(__dirname, "../src/utils"),
 			"@router": path.resolve(__dirname, "../src/router"),
+			"@assets": path.resolve(__dirname, "../src/assets"),
 		},
-		extensions: ['.ts', '.tsx', '.js']
+		extensions: ['.ts', '.tsx', '.js', '.jpg', '.png', '.svg', '.gif']
 	},
 
 	module: {
 		rules: [
-            {
-                test: /\.(jsx|js)$/,
-                include: path.resolve(__dirname, 'src'),
-                exclude: /node_modules/,
-                use: [{
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env', '@babel/preset-react']
-                    }
-                }]
-            },
+			{
+				test: /\.(jsx|js)$/,
+				include: path.resolve(__dirname, 'src'),
+				exclude: /node_modules/,
+				use: [{
+					loader: 'babel-loader',
+					options: {
+						presets: ['@babel/preset-env', '@babel/preset-react']
+					}
+				}]
+			},
 			{
 				test: /\.ts(x?)$/,
 				exclude: /(node_modules)/,  // исключаем из обработки папку node_modules
@@ -59,14 +59,14 @@ module.exports = {
 					'sass-loader'
 				]
 			},
-            {
-                // Preprocess our own .css files
-                // This is the place to add your own loaders (e.g. sass/less etc.)
-                // for a list of loaders, see https://webpack.js.org/loaders/#styling
-                test: /\.css$/,
-                exclude: /node_modules/,
-                use: ['style-loader', 'css-loader'],
-            },
+			{
+				// Preprocess our own .css files
+				// This is the place to add your own loaders (e.g. sass/less etc.)
+				// for a list of loaders, see https://webpack.js.org/loaders/#styling
+				test: /\.css$/,
+				exclude: /node_modules/,
+				use: ['style-loader', 'css-loader'],
+			},
 			{
 				test: /\.css$/i,
 				use: ["style-loader", "css-loader"],

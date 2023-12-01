@@ -27,7 +27,7 @@ function useAsyncState(initialState: any) {
 					setState(newState);
 				}
 			}),
-		[]
+		[],
 	);
 
 	return [state, setAsyncState];

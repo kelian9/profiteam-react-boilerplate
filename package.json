@@ -3,8 +3,8 @@
 	"version": "0.0.1",
 	"description": "🔥 A highly scalable foundation with the best developer experience and a focus on performance and our best practices.",
 	"engines": {
-		"npm": ">=5",
-		"node": ">=8.15.1"
+		"npm": ">=8.11.0",
+		"node": ">=16.16.0"
 	},
 	"scripts": {
 		"prepare": "husky install",
@@ -18,10 +18,12 @@
 		"cypress:waitbundle": "wait-on http://localhost:3001/main.js -t 120000",
 		"test:ui": "concurrently 'npm:start:cypress' 'npm:cypress:open'",
 		"test:ui:ci": "concurrently 'npm:start:cypress' 'npm run cypress:waitbundle && npm run cypress:run' --kill-others --kill-others-on-fail --success first",
-		"lint": "eslint --ext .js,.ts,.tsx,.jsx src --fix"
+		"lint": "eslint --ext .js,.ts,.tsx,.jsx src --fix",
+		"prettier-check": "prettier --check src/**/*.{js,ts,jsx,tsx}",
+		"prettier-write": "prettier --write src/**/*.{js,ts,jsx,tsx}"
 	},
 	"lint-staged": {
-		"./src/**/*.{js,ts,jsx,tsx}": "prettier --write --ignore-unknown",
+		"./src/**/*.{js,ts,jsx,tsx}": "eslint --ext .js,.ts,.tsx,.jsx src --fix",
 		"./cypress/**/*.{js,ts,jsx,tsx}": "eslint"
 	},
 	"repository": {
@@ -52,7 +54,6 @@
 		"babel-loader": "^8.2.5",
 		"chalk": "5.3.0",
 		"clean-webpack-plugin": "^4.0.0",
-		"connected-react-router": "6.9.3",
 		"history": "5.3.0",
 		"lodash": "^4.17.21",
 		"moment": "^2.29.4",

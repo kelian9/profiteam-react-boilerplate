@@ -1,12 +1,13 @@
 {
-    "editor.formatOnSave": true,
-    "editor.formatOnPaste": true,
-    "editor.codeActionsOnSave": {
-        "source.organizeImports": true
-    },
-    "files.insertFinalNewline": true,
-    "eslint.validate": [
-        "typescript",
-        "typescriptreact"
-    ]
+	"editor.formatOnSave": true,
+	"editor.formatOnPaste": true,
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": true,
+		"source.fixAll.eslint": true,
+	},
+	"files.insertFinalNewline": true,
+	"eslint.validate": [
+		"typescript",
+		"typescriptreact"
+	],
 }

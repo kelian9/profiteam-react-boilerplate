@@ -1,0 +1,31 @@
+.elem {
+	width: 200px;
+	height: 300px;
+	background: rgb(72, 24, 24);
+	color: #fff;
+}
+
+.container {
+	max-height: 400px;
+	overflow-y: auto;
+
+	&::-webkit-scrollbar {
+		width: 3px;
+	}
+
+	/* Track */
+	&::-webkit-scrollbar-track {
+		-webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+		-webkit-border-radius: 3px;
+		border-radius: 3px;
+	}
+
+	/* Handle */
+	&::-webkit-scrollbar-thumb {
+		-webkit-border-radius: 3px;
+		border-radius: 3px;
+		// background: #b19600;
+		background: #0089d8;
+		-webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.5);
+	}
+}
