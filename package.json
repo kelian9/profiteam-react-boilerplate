@@ -8,7 +8,7 @@
 	},
 	"scripts": {
 		"prepare": "husky install",
-		"setup": "npm install --legacy-peer-deps",
+		"setup": "npm install",
 		"start": "webpack serve --mode development --config webpack/dev.js",
 		"start:cypress": "webpack serve --mode development --config webpack/cypress.js",
 		"prebuild": "rimraf dist/",
