@@ -7,3 +7,5 @@ declare module '*.svg' {
 	const content: { [key: string]: any };
 	export = content;
 }
+
+declare module '*.png';
