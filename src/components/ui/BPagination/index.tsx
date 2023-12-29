@@ -123,35 +123,45 @@ const BPagination = (props: BPaginationPropsTypes) => {
             className={styles.pagination}
             style={{ opacity: disable ? 0.6 : 1 }}
         >
-            {bigStep
+            {bigStep && pageCount > 1
                 ? <img
                     src={BigStepIcon}
                     className={styles['left-img']}
                     alt='left arrow image'
+                    style={{ opacity: curPage === 1 ? 0.5 : 1 }}
                     onClick={doBigStepToFirstPage}
                 />
                 : null
             }
 
-            <img
-                src={ArrowIcon}
-                alt="arrow icon"
-                className={styles['left-img']}
-                onClick={handlePrevClick}
-            />
+            {pageCount > 1
+                ? <img
+                    src={ArrowIcon}
+                    alt="arrow icon"
+                    className={styles['left-img']}
+                    style={{ opacity: curPage === 1 ? 0.5 : 1 }}
+                    onClick={handlePrevClick}
+                />
+                : null
+            }
 
             {prepareBtnsLine()}
 
-            <img
-                src={ArrowIcon}
-                alt="arrow icon"
-                onClick={handleNextClick}
-            />
+            {pageCount > 1
+                ? <img
+                    src={ArrowIcon}
+                    alt="arrow icon"
+                    style={{ opacity: curPage === pageCount ? 0.5 : 1 }}
+                    onClick={handleNextClick}
+                />
+                : null
+            }
 
-            {bigStep
+            {bigStep && pageCount > 1
                 ? <img
                     src={BigStepIcon}
                     alt='right arrow image'
+                    style={{ opacity: curPage === pageCount ? 0.5 : 1 }}
                     onClick={doBigStepToLastPage}
                 />
                 : null
