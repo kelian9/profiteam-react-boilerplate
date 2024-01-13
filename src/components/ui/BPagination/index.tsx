@@ -4,11 +4,10 @@ import ArrowIcon from '@assets/icons/arrow-icon.png';
 import BigStepIcon from '@assets/icons/big-step-arrow-icon.png';
 import BPaginationShape from '@models/enums/BPaginationShapeEnum';
 import React, { useEffect, useState } from 'react';
-import styles from './style.module.scss';
 
 interface BPaginationPropsTypes {
     btnShape?: BPaginationShape;
-    disable?: boolean;
+    disabled?: boolean;
     pageCount: number;
     currentPage?: number;
     bigStep?: boolean;
@@ -18,7 +17,7 @@ interface BPaginationPropsTypes {
 const BPagination = (props: BPaginationPropsTypes) => {
     const {
         btnShape,
-        disable,
+        disabled,
         pageCount,
         currentPage,
         bigStep,
@@ -26,13 +25,13 @@ const BPagination = (props: BPaginationPropsTypes) => {
     } = props;
 
     const [pages, setPages] = useState<string[]>([]);
-    const [curPage, setCurPage] = useState<number>(1);
+    const [curPage, setCurrentPage] = useState<number>(1);
 
     const prepareBtnShape = () => btnShape ? '5px' : '50%';
 
-    const showCurrentBtn = (text: string) => +text === curPage ? 1 : 0.7;
+    const showCurrentBtn = (value: number) => value === curPage ? 1 : 0.7;
 
-    const prepareBtnsArray = (current: number) => {
+    const prepareVisibleBtnsArray = (current: number) => {
         const arrayOfBtnText = [];
         if (pageCount - current >= 0) {
             if (pageCount - current < 5) {
@@ -60,34 +59,34 @@ const BPagination = (props: BPaginationPropsTypes) => {
     const handleClickOnPage = (page: string, disabled: boolean | undefined) => {
         if (disabled) return
         if (page === String(curPage)) return
-        setCurPage(+page)
-        prepareBtnsArray(+page)
+        setCurrentPage(+page)
+        prepareVisibleBtnsArray(+page)
         handlePageChange();
     }
 
     const handleNextClick = () => {
         if (curPage < Number(pages.at(-1))) {
-            setCurPage(curPage + 1);
-            if (Number(pages.at(-1)) - curPage > 3) prepareBtnsArray(curPage + 1);
+            setCurrentPage(curPage + 1);
+            if (Number(pages.at(-1)) - curPage > 3) prepareVisibleBtnsArray(curPage + 1);
         }
         handlePageChange();
     }
 
     const handlePrevClick = () => {
         if (curPage - 1 > 0) {
-            setCurPage(curPage - 1);
-            if (Number(pages.at(-1)) - curPage > 3) prepareBtnsArray(curPage - 1);
-        } else setCurPage(1)
+            setCurrentPage(curPage - 1);
+            if (Number(pages.at(-1)) - curPage > 3) prepareVisibleBtnsArray(curPage - 1);
+        } else setCurrentPage(1)
         handlePageChange();
     }
 
-    const prepareBtnsLine = () => {
+    const renderVisibleBtnsArray = () => {
         const pagesLine = pages.map((page, index) => {
             return (
                 <button
                     key={index}
-                    style={{ borderRadius: prepareBtnShape(), opacity: showCurrentBtn(page) }}
-                    onClick={() => handleClickOnPage(page, disable)}
+                    style={{ borderRadius: prepareBtnShape(), opacity: showCurrentBtn(+page) }}
+                    onClick={() => handleClickOnPage(page, disabled)}
                 >
                     {page}
                 </button>
@@ -98,35 +97,33 @@ const BPagination = (props: BPaginationPropsTypes) => {
     }
 
     const doBigStepToLastPage = () => {
-        setCurPage(Number(pages.at(-1)));
-        if (Number(pages.at(-1)) - curPage > 3) prepareBtnsArray(Number(pages.at(-1)) - 3);
+        setCurrentPage(Number(pages.at(-1)));
+        if (Number(pages.at(-1)) - curPage > 3) prepareVisibleBtnsArray(Number(pages.at(-1)) - 3);
         handlePageChange();
     }
 
     const doBigStepToFirstPage = () => {
-        setCurPage(1);
-        prepareBtnsArray(1);
+        setCurrentPage(1);
+        prepareVisibleBtnsArray(1);
         handlePageChange();
     }
 
     useEffect(() => {
-        prepareBtnsArray(curPage);
-    }, [btnShape, disable, pageCount, currentPage, bigStep]);
+        prepareVisibleBtnsArray(curPage);
+    }, [pageCount, currentPage]);
 
     useEffect(() => {
-        if (currentPage) setCurPage(currentPage)
-        else setCurPage(1)
+        if (currentPage) setCurrentPage(currentPage)
+        else setCurrentPage(1)
     }, []);
 
     return (
         <div
-            className={styles.pagination}
-            style={{ opacity: disable ? 0.6 : 1 }}
+            style={{ opacity: disabled ? 0.6 : 1 }}
         >
             {bigStep && pageCount > 1
                 ? <img
                     src={BigStepIcon}
-                    className={styles['left-img']}
                     alt='left arrow image'
                     style={{ opacity: curPage === 1 ? 0.5 : 1 }}
                     onClick={doBigStepToFirstPage}
@@ -138,14 +135,13 @@ const BPagination = (props: BPaginationPropsTypes) => {
                 ? <img
                     src={ArrowIcon}
                     alt="arrow icon"
-                    className={styles['left-img']}
                     style={{ opacity: curPage === 1 ? 0.5 : 1 }}
                     onClick={handlePrevClick}
                 />
                 : null
             }
 
-            {prepareBtnsLine()}
+            {renderVisibleBtnsArray()}
 
             {pageCount > 1
                 ? <img
