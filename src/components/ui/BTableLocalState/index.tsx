@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import BTable from '../BTable';
 
 interface IBTableLocalStateProps {
 	fields: any[];
-	footFields?: [];
-	actions?: {};
+	footFields?: any[];
+	actions?: { save?: (el?: any) => void; edit?: (el?: any) => void; delete?: (el?: any) => void };
 	perPage?: number;
-	fetchData?: (data?: any) => void;
-	rowClick?: () => void;
-	fieldClick?: () => void;
-	tableParams?: any;
+	getData?: (data?: any) => void;
+	rowClick?: (row?: any) => void;
+	fieldClick?: (field?: any) => void;
+	tableParams?: { pagination: Boolean; sort: Boolean };
 	style?: React.CSSProperties;
 }
 
@@ -20,69 +20,45 @@ const BTableLocalState = (props: IBTableLocalStateProps) => {
 		footFields,
 		actions,
 		perPage = 20,
-		fetchData,
+		getData,
 		rowClick,
 		fieldClick,
 		tableParams,
 		style,
 	} = props;
 
-	const [data, setData] = useState<any[]>([
-		{
-			name: 'Test 1',
-			id: 1,
-			work: 'Student',
-		},
-		{
-			name: 'Test 2',
-			id: 2,
-			work: 'Men',
-		},
-		{
-			name: 'Test 3',
-			id: 3,
-			work: 'Krutoy',
-		},
-	]);
-	const [sort, setSort] = useState<string>('');
-	const [count, setCount] = useState<number>(0);
+	const [data, setData] = useState<any[]>([]);
+	// const [sort, setSort] = useState<string>('');
+	const [count, setCount] = useState<number>(10);
 	const [curPage, setCurPage] = useState<number>(1);
 
 	const sortTable = (sortBy: string, sortDesc: boolean) => {
-		if (sortDesc) {
-			setSort(sortBy);
-		} else {
-			setSort(`-${sortBy}`);
-		};
-		resetPagination();
+		// add sort method
+		setCurPage(1);
 		setTimeout(() => {
-			fetchItems();
+			getItems();
 		}, 0);
 	};
 
-	const changePage = (page: number) => {
-		setCurPage(page);
-		fetchItems();
-	};
-
-	const resetPagination = () => {
-		setCurPage(1);
-	};
-
-	const fetchItems = () => {
-		if (!fetchData) return;
+	const getItems = () => {
+		if (!getData) return;
 		const data = {
-			sort: sort,
-			offset: ((curPage - 1) * perPage),
-			limit: perPage,
+			// sort: sort,
+			_page: curPage,
+			_limit: 10,
 		}
-		fetchData()
+		getData(data)
 			.then((response: any) => {
-				setData(response.data.results);
-				setCount(response.data.count);
+				// console.log(response);
+				setData(response.data);
+				// setCount(response.data.count);
 			})
 			.catch((error: any) => { })
 	};
+
+	useEffect(() => {
+		getItems();
+	}, [curPage])
 
 	return (
 		<BTable
@@ -93,9 +69,9 @@ const BTableLocalState = (props: IBTableLocalStateProps) => {
 			count={count}
 			perPage={perPage}
 			curPage={curPage}
-			fetchData={fetchData}
-			resetPagination={resetPagination}
-			changePage={changePage}
+			getData={getItems}
+			resetPagination={() => setCurPage(1)}
+			changePage={setCurPage}
 			sortTable={sortTable}
 			rowClick={rowClick}
 			fieldClick={fieldClick}

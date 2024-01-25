@@ -1,28 +1,26 @@
 import React from 'react';
 import BTable from '../BTable';
 
-interface IBTableGlobalStateProps<V = number> {
+interface IBTableGlobalStateProps {
 	data: [];
-	fields: [];
-	footFields?: [];
-	actions?: {};
-	count?: V;
-	perPage?: V;
-	curPage?: V;
-	fetchData?: () => void;
-	changePage?: Function;
+	fields: any[];
+	footFields?: any[];
+	actions?: { save?: (el?: any) => void; edit?: (el?: any) => void; delete?: (el?: any) => void };
+	count?: number;
+	perPage?: number;
+	curPage?: number;
+	getData?: (data?: any) => void;
+	changePage?: (page: number) => void;
 	resetPagination?: () => void;
-	changeOrdering?: (sortBy: string) => void;
-	rowClick?: Function;
-	fieldClick?: Function;
-	saveItem?: Function;
-	editItem?: Function;
-	deleteItem?: Function;
+	// changeOrdering?: (sortBy: string) => void;
+	rowClick?: (row?: any) => void;
+	fieldClick?: (field?: any) => void;
+	tableParams?: { pagination: Boolean; sort: Boolean };
 	style?: React.CSSProperties;
 }
 
 /* eslint-disable */
-const BTableGlobalState = <T extends object, V = number>(props: IBTableGlobalStateProps<V>) => {
+const BTableGlobalState = <T extends object, V = number>(props: IBTableGlobalStateProps) => {
 	const {
 		data,
 		fields,
@@ -31,53 +29,49 @@ const BTableGlobalState = <T extends object, V = number>(props: IBTableGlobalSta
 		count,
 		perPage,
 		curPage,
-		fetchData,
+		getData,
 		changePage,
 		resetPagination,
-		changeOrdering,
 		rowClick,
 		fieldClick,
-		saveItem,
-		editItem,
-		deleteItem,
+		tableParams,
 		style,
 	} = props;
 
 	const sortTable = (sortBy: string, sortDesc: boolean) => {
-		if (sortDesc) {
-			changeOrdering(sortBy);
-		} else {
-			changeOrdering(`-${sortBy}`);
-		};
+		// if (sortDesc) {
+		// 	changeOrdering(sortBy);
+		// } else {
+		// 	changeOrdering(`-${sortBy}`);
+		// };
+		if (!resetPagination) return;
+		if (!getData) return;
 		resetPagination();
 		setTimeout(() => {
-			fetchData();
+			getData();
 		}, 0);
 	};
 
-	const changeCurPage = (page: number) => {
+	const changeCurPage = async (page: number) => {
+		if (!changePage) return;
 		changePage(page);
-		fetchData();
 	};
 
 	return (
 		<BTable
 			data={data}
 			footFields={footFields}
-			fieds={fields}
+			fields={fields}
 			actions={actions}
-			count={count}
 			perPage={perPage}
+			count={count}
 			curPage={curPage}
-			fetchData={fetchData}
+			getData={getData}
 			resetPagination={resetPagination}
 			changePage={changeCurPage}
-			sortTable={sortTable}
 			rowClick={rowClick}
 			fieldClick={fieldClick}
-			saveItem={saveItem}
-			editItem={editItem}
-			deleteItem={deleteItem}
+			tableParams={tableParams}
 			style={style}
 		/>
 	);

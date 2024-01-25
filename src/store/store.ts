@@ -5,10 +5,12 @@ import history from '@utils/history';
 // import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { createRouterMiddleware, createRouterReducer } from '@lagunovsky/redux-react-router';
 import rejectedErrorsQueueReducer from './slices/rejectedErrorsQueue';
+import testReducer from './slices/testSlice';
 
 const reducer = combineReducers({
 	router: createRouterReducer(history),
 	rejectedErrorsQueue: rejectedErrorsQueueReducer,
+	test: testReducer,
 });
 
 const store = configureStore({

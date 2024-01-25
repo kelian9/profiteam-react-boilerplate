@@ -1,13 +1,13 @@
 import history from '@utils/history';
 // import { ConnectedRouter } from 'connected-react-router';
 import { ReduxRouter } from '@lagunovsky/redux-react-router';
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import routes from './routes';
 
 const AppRouter: React.FC = () => {
 	const pathToComponentMap = useMemo(() => {
-		console.log(routes);
+		// console.log(routes);
 		return routes.reduce(
 			(a, x) => {
 				a[x.path] = x.component;
@@ -16,8 +16,6 @@ const AppRouter: React.FC = () => {
 			{} as Record<string, React.FC>,
 		);
 	}, []);
-
-	useEffect(() => console.log('work'), []);
 
 	return (
 		<ReduxRouter history={history}>

@@ -4,7 +4,7 @@ declare module '*.scss' {
 }
 
 declare module '*.svg' {
-	const content: { [key: string]: any };
+	const content: string;
 	export = content;
 }
 

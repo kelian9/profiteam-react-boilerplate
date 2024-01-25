@@ -8,15 +8,14 @@ import styles from './style.module.scss';
 interface IBTableNodeProps {
 	node: any;
 	fields: any[];
-	actions?: any;
+	actions?: { save?: (el?: any) => void, edit?: (el?: any) => void, delete?: (el?: any) => void };
 	// nestingLevel?: V;
-	rowClick?: Function;
-	fieldClick?: Function;
-	style?: React.CSSProperties;
+	rowClick?: (row?: any) => void;
+	fieldClick?: (field?: any) => void;
+	styleNode?: React.CSSProperties;
 }
 /* eslint-disable */
 const BTableNode = (props: IBTableNodeProps) => {
-	/* eslint-disable */
 	const {
 		node,
 		fields,
@@ -24,6 +23,7 @@ const BTableNode = (props: IBTableNodeProps) => {
 		// nestingLevel,
 		rowClick,
 		fieldClick,
+		styleNode,
 	} = props;
 
 	const renderField = (field: any) => {
@@ -38,21 +38,23 @@ const BTableNode = (props: IBTableNodeProps) => {
 	};
 
 	return (
-		<tr>
+		<tr style={styleNode}>
 			{fields?.map((field, index) => (
 				<td key={index}>{renderField(field)}</td>
 			))}
 			{actions
-				&& <td className={styles['node-actions']}>
-					{actions.save &&
-						<img src={saveIcon as string} alt='save' onClick={actions.save} className={styles['node-actions-icon']} />
-					}
-					{actions.edit &&
-						<img src={editIcon} alt='edit' onClick={actions.edit} className={styles['node-actions-icon']} />
-					}
-					{actions.delete &&
-						<img src={deleteIcon} alt='delete' onClick={actions.delete} className={styles['node-actions-icon']} />
-					}
+				&& <td>
+					<div className={styles['node-actions']}>
+						{actions.save &&
+							<img src={saveIcon} alt='save' onClick={actions.save} className={styles['node-actions-icon']} />
+						}
+						{actions.edit &&
+							<img src={editIcon} alt='edit' onClick={actions.edit} className={styles['node-actions-icon']} />
+						}
+						{actions.delete &&
+							<img src={deleteIcon} alt='delete' onClick={actions.delete} className={styles['node-actions-icon']} />
+						}
+					</div>
 				</td>
 			}
 		</tr>
