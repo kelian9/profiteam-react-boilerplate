@@ -21,7 +21,11 @@ const name = 'test';
 const testSlice = createSlice({
 	name,
 	initialState,
-	reducers: {},
+	reducers: {
+		changePage(state, action) {
+			state._page = action.payload.page;
+		},
+	},
 	extraReducers: (builder) => {
 		// Getting List
 		builder.addCase(testActions.getData.pending, (state) => {
@@ -32,26 +36,15 @@ const testSlice = createSlice({
 				state.isLoading = false;
 				return;
 			}
-			state.data = action.payload;
 			state.data = [...action.payload];
 			state.isLoading = false;
 		});
 		builder.addCase(testActions.getData.rejected, (state) => {
 			state.isLoading = false;
 		});
-
-		// changePage
-		builder.addCase(testActions.changePage.pending, (state) => {
-			state.isLoading = true;
-		});
-		builder.addCase(testActions.changePage.fulfilled, (state, action) => {
-			console.log('changePAGE GLOBAL - ', action.payload);
-			state._page = action.payload;
-		});
-		builder.addCase(testActions.changePage.rejected, (state) => {
-			state.isLoading = false;
-		});
 	},
 });
+
+export const { changePage } = testSlice.actions;
 
 export default testSlice.reducer;

@@ -1,3 +1,4 @@
+import { changePage } from '@slices/testSlice';
 import testActions from '@store/actions/testActions';
 import { AppDispatch } from '@store/store';
 import React from 'react';
@@ -43,9 +44,8 @@ const Home: React.FC = () => {
 	const tableState = useSelector((state: any) => state.test);
 
 	const changeCurPage = (page: number) => {
-		dispatch(testActions.changePage(page));
-		console.log(tableState);
-		dispatch(testActions.getData({ _page: tableState._page, _limit: tableState._limit }));
+		dispatch(changePage({ page }));
+		dispatch(testActions.getData());
 	};
 
 	return (
@@ -61,7 +61,7 @@ const Home: React.FC = () => {
 			<BTableGlobalState
 				data={tableState.data}
 				curPage={tableState._page}
-				getData={() => dispatch(testActions.getData({ _page: tableState._page, _limit: tableState._limit }))}
+				getData={() => dispatch(testActions.getData())}
 				changePage={changeCurPage}
 				count={tableState.count}
 				fields={fieldsTest}
