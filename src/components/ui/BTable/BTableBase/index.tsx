@@ -1,31 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import chevronDownIcon from '../../../assets/images/icons/chevron-down-icon.svg';
-import chevronUpIcon from '../../../assets/images/icons/chevron-up-icon.svg';
-import BPagination from '../BPagination';
+import chevronDownIcon from '../../../../assets/images/icons/chevron-down-icon.svg';
+import chevronUpIcon from '../../../../assets/images/icons/chevron-up-icon.svg';
+import BPagination from '../../BPagination';
 import BTableNode from './BTableNode';
+import IBTableBaseProps from './models/IBTableBase';
 import styles from './style.module.scss';
 
-interface IBTableProps {
-	data: any[];
-	fields: any[];
-	footFields?: any[];
-	actions?: { save?: (el?: any) => void; edit?: (el?: any) => void; delete?: (el?: any) => void };
-	count?: number;
-	perPage?: number;
-	curPage?: number;
-	getData?: (data?: any) => void;
-	changePage?: (page: number) => void;
-	resetPagination?: () => void;
-	sortTable?: (sortBy: string, sortDesc: boolean) => void;
-	rowClick?: (row?: any) => void;
-	fieldClick?: (field?: any) => void;
-	tableParams?: { pagination: Boolean; sort: Boolean };
-	style?: React.CSSProperties;
-	styleNode?: React.CSSProperties;
-}
-
 /* eslint-disable */
-const BTable = (props: IBTableProps) => {
+const BTableBase = (props: IBTableBaseProps) => {
 	const {
 		data,
 		fields,
@@ -35,27 +17,23 @@ const BTable = (props: IBTableProps) => {
 		perPage,
 		curPage,
 		getData,
-		changePage,
 		resetPagination,
-		sortTable,
 		rowClick,
-		fieldClick,
-		tableParams,
+		tableOptions,
 		style,
 		styleNode,
 	} = props;
 
-	const [sortBy, setSortBy] = useState<string>('date_created');
+	const [sortBy, setSortBy] = useState<string>('');
 	const [sortDesc, setSortDesc] = useState<boolean>(false);
 
 	const pagination = (page: number) => {
-		if (!tableParams?.pagination) return;
-		if (!changePage) return;
-		changePage(page);
+		if (!tableOptions?.pagination?.enabled) return;
+		if (tableOptions.pagination.method) tableOptions.pagination.method(page);
 	};
 
 	const sorting = (key: string) => {
-		if (!tableParams?.sort) return;
+		if (!tableOptions?.sort?.enabled) return;
 		if (fields.filter(item => item.sortable === true).findIndex(item => item.key === key) === -1) return;
 		if (sortBy === key) {
 			setSortDesc(!sortDesc);
@@ -65,21 +43,18 @@ const BTable = (props: IBTableProps) => {
 		setSortDesc(false);
 	};
 
-	// useEffect(() => {
-	// 	if (!sortBy) return;
-	// 	if (!sortTable) return;
-	// 	sortTable(sortBy, sortDesc);
-	// }, [sortBy]);
-
-	// useEffect(() => {
-	// sortTable(sortBy, sortDesc);
-	// }, [sortDesc]);
+	useEffect(() => {
+		if (!sortDesc) return;
+		if (tableOptions?.sort?.method) tableOptions.sort.method({ sortBy, sortDesc });
+	}, [sortBy]);
 
 	useEffect(() => {
-		// if (!resetPagination) return;
-		if (!getData) return;
-		// resetPagination();
-		getData();
+		if (tableOptions?.sort?.method) tableOptions.sort.method({ sortBy, sortDesc });
+	}, [sortDesc]);
+
+	useEffect(() => {
+		if (resetPagination) resetPagination()
+		if (getData) getData();
 	}, []);
 
 	return (
@@ -111,7 +86,6 @@ const BTable = (props: IBTableProps) => {
 							fields={fields}
 							actions={actions}
 							rowClick={rowClick}
-							fieldClick={fieldClick}
 							styleNode={styleNode}
 							key={index}
 						/>
@@ -119,12 +93,12 @@ const BTable = (props: IBTableProps) => {
 				</tbody>
 				<tfoot>
 					<tr>
-						{footFields?.map((item, index) => <td key={index}>{item}</td>)}
+						{footFields?.map((item, index) => <td key={index}>{item?.label}</td>)}
 					</tr>
 				</tfoot>
 			</table>
 			{
-				tableParams?.pagination &&
+				tableOptions?.pagination?.enabled &&
 				<BPagination
 					disabled={false}
 					pageCount={count ? count : 1}
@@ -137,4 +111,4 @@ const BTable = (props: IBTableProps) => {
 	);
 };
 
-export default BTable;
+export default BTableBase;

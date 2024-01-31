@@ -7,7 +7,6 @@ import routes from './routes';
 
 const AppRouter: React.FC = () => {
 	const pathToComponentMap = useMemo(() => {
-		// console.log(routes);
 		return routes.reduce(
 			(a, x) => {
 				a[x.path] = x.component;
