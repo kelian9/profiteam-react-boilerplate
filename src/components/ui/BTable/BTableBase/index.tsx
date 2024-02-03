@@ -17,7 +17,7 @@ const BTableBase = (props: IBTableBaseProps) => {
 		getData,
 		resetPagination,
 		rowClick,
-		tableOptions,
+		listOptions,
 		style,
 		styleNode,
 	} = props;
@@ -26,12 +26,12 @@ const BTableBase = (props: IBTableBaseProps) => {
 	const [sortDesc, setSortDesc] = useState<boolean>(false);
 
 	const pagination = (page: number) => {
-		if (!tableOptions?.pagination?.enabled) return;
-		if (tableOptions.pagination.method) tableOptions.pagination.method(page);
+		if (!listOptions?.pagination?.enabled) return;
+		if (listOptions.pagination.method) listOptions.pagination.method(page);
 	};
 
 	const sorting = (key: string) => {
-		if (!tableOptions?.sort?.enabled) return;
+		if (!listOptions?.sort?.enabled) return;
 		if (fields.filter((item) => item.sortable === true).findIndex((item) => item.key === key) === -1) return;
 		if (sortBy === key) {
 			setSortDesc(!sortDesc);
@@ -43,11 +43,11 @@ const BTableBase = (props: IBTableBaseProps) => {
 
 	useEffect(() => {
 		if (!sortDesc) return;
-		if (tableOptions?.sort?.method) tableOptions.sort.method({ sortBy, sortDesc });
+		if (listOptions?.sort?.method) listOptions.sort.method({ sortBy, sortDesc });
 	}, [sortBy]);
 
 	useEffect(() => {
-		if (tableOptions?.sort?.method) tableOptions.sort.method({ sortBy, sortDesc });
+		if (listOptions?.sort?.method) listOptions.sort.method({ sortBy, sortDesc });
 	}, [sortDesc]);
 
 	useEffect(() => {
@@ -93,7 +93,7 @@ const BTableBase = (props: IBTableBaseProps) => {
 					<tr>{footFields?.map((item, index) => <td key={index}>{item?.label}</td>)}</tr>
 				</tfoot>
 			</table>
-			{tableOptions?.pagination?.enabled && (
+			{listOptions?.pagination?.enabled && (
 				<BPagination
 					bigStep
 					disabled={false}

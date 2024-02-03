@@ -12,13 +12,13 @@ interface IBTableProps<T> {
 	perPage?: number;
 	getData?: (...args: any) => Promise<AxiosResponse | T>;
 	rowClick?: (item?: number | string) => void;
-	tableOptions?: ITableOptions;
+	listOptions?: ITableOptions;
 	style?: React.CSSProperties;
 	styleNode?: React.CSSProperties;
 }
 
 const BTable = <T extends object>(props: IBTableProps<T>) => {
-	const { fields, footFields, actions, perPage, getData, rowClick, tableOptions, style, styleNode } = props;
+	const { fields, footFields, actions, perPage, getData, rowClick, listOptions, style, styleNode } = props;
 
 	const [data, setData] = useState<any[]>([]);
 	const [sortData, setSortData] = useState<any>();
@@ -44,11 +44,11 @@ const BTable = <T extends object>(props: IBTableProps<T>) => {
 
 	const complexListOptions = {
 		pagination: {
-			enabled: tableOptions?.pagination?.enabled || false,
+			enabled: listOptions?.pagination?.enabled || false,
 			method: (page: number) => setCurPage(page),
 		},
 		sort: {
-			enabled: tableOptions?.sort?.enabled || false,
+			enabled: listOptions?.sort?.enabled || false,
 			method: (sortData: any) => setSortData(sortData),
 		},
 	};
@@ -69,7 +69,7 @@ const BTable = <T extends object>(props: IBTableProps<T>) => {
 			getData={fetchData}
 			resetPagination={() => setCurPage(1)}
 			rowClick={rowClick}
-			tableOptions={complexListOptions}
+			listOptions={complexListOptions}
 			style={style}
 			styleNode={styleNode}
 		/>

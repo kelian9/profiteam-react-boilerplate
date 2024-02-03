@@ -13,7 +13,7 @@ interface IBTableBaseProps {
 	getData?: (data?: any) => any;
 	resetPagination?: () => void;
 	rowClick?: (itemId?: number | string) => void;
-	tableOptions?: ITableOptions;
+	listOptions?: ITableOptions;
 	style?: React.CSSProperties;
 	styleNode?: React.CSSProperties;
 }

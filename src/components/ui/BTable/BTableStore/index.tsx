@@ -15,7 +15,7 @@ interface IBTableStoreProps {
 	getData?: (data?: any) => any;
 	resetPagination?: () => void;
 	rowClick?: (item?: number | string) => void;
-	tableOptions?: ITableOptions;
+	listOptions?: ITableOptions;
 	style?: React.CSSProperties;
 	styleNode?: React.CSSProperties;
 }
@@ -32,7 +32,7 @@ const BTableStore = (props: IBTableStoreProps) => {
 		getData,
 		resetPagination,
 		rowClick,
-		tableOptions,
+		listOptions,
 		style,
 		styleNode,
 	} = props;
@@ -49,7 +49,7 @@ const BTableStore = (props: IBTableStoreProps) => {
 			getData={getData}
 			resetPagination={resetPagination}
 			rowClick={rowClick}
-			tableOptions={tableOptions}
+			listOptions={listOptions}
 			style={style}
 			styleNode={styleNode}
 		/>
