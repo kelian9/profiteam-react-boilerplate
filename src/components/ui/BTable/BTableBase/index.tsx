@@ -6,7 +6,6 @@ import BTableNode from './BTableNode';
 import IBTableBaseProps from './models/IBTableBase';
 import styles from './style.module.scss';
 
-/* eslint-disable */
 const BTableBase = (props: IBTableBaseProps) => {
 	const {
 		data,
@@ -14,7 +13,6 @@ const BTableBase = (props: IBTableBaseProps) => {
 		footFields,
 		actions,
 		count,
-		perPage,
 		curPage,
 		getData,
 		resetPagination,
@@ -34,11 +32,11 @@ const BTableBase = (props: IBTableBaseProps) => {
 
 	const sorting = (key: string) => {
 		if (!tableOptions?.sort?.enabled) return;
-		if (fields.filter(item => item.sortable === true).findIndex(item => item.key === key) === -1) return;
+		if (fields.filter((item) => item.sortable === true).findIndex((item) => item.key === key) === -1) return;
 		if (sortBy === key) {
 			setSortDesc(!sortDesc);
 			return;
-		};
+		}
 		setSortBy(key);
 		setSortDesc(false);
 	};
@@ -53,7 +51,7 @@ const BTableBase = (props: IBTableBaseProps) => {
 	}, [sortDesc]);
 
 	useEffect(() => {
-		if (resetPagination) resetPagination()
+		if (resetPagination) resetPagination();
 		if (getData) getData();
 	}, []);
 
@@ -66,13 +64,13 @@ const BTableBase = (props: IBTableBaseProps) => {
 							<th key={index} onClick={() => sorting(field.key)}>
 								<div className={styles.fieldHead}>
 									<span>{field.label}</span>
-									{field.key === sortBy
-										&& <img
+									{field.key === sortBy && (
+										<img
 											src={sortDesc ? chevronUpIcon : chevronDownIcon}
 											alt=''
 											onClick={() => sorting(field.key)}
 										/>
-									}
+									)}
 								</div>
 							</th>
 						))}
@@ -82,31 +80,28 @@ const BTableBase = (props: IBTableBaseProps) => {
 				<tbody>
 					{data?.map((item, index) => (
 						<BTableNode
+							key={index}
 							node={item}
 							fields={fields}
 							actions={actions}
 							rowClick={rowClick}
 							styleNode={styleNode}
-							key={index}
 						/>
 					))}
 				</tbody>
 				<tfoot>
-					<tr>
-						{footFields?.map((item, index) => <td key={index}>{item?.label}</td>)}
-					</tr>
+					<tr>{footFields?.map((item, index) => <td key={index}>{item?.label}</td>)}</tr>
 				</tfoot>
 			</table>
-			{
-				tableOptions?.pagination?.enabled &&
+			{tableOptions?.pagination?.enabled && (
 				<BPagination
+					bigStep
 					disabled={false}
 					pageCount={count ? count : 1}
 					currentPage={curPage}
-					bigStep
 					handlePageChange={pagination}
 				/>
-			}
+			)}
 		</>
 	);
 };

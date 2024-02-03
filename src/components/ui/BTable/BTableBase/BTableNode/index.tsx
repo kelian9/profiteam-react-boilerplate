@@ -6,25 +6,23 @@ import BSelect from '../../../../../components/ui/BSelect';
 import IBTableNodeProps from '../models/IBTableNode';
 import styles from './style.module.scss';
 
-/* eslint-disable */
 const BTableNode = (props: IBTableNodeProps) => {
-	const {
-		node,
-		fields,
-		actions,
-		rowClick,
-		styleNode,
-	} = props;
+	const { node, fields, actions, rowClick, styleNode } = props;
+	type INode = ReturnType<typeof node>['node'];
 
-	const handlerRowClick = (e: React.MouseEvent<HTMLTableRowElement, MouseEvent>) => {
+	const rowClickHandler = (e: React.MouseEvent<HTMLTableRowElement, MouseEvent>) => {
 		e.stopPropagation();
 		if (rowClick) rowClick(node.id);
 	};
 
-	const handlerActionClick = (e: React.MouseEvent<HTMLImageElement | HTMLSpanElement, MouseEvent>, cb: any) => {
+	/* eslint-disable */
+	const actionClickHandler = (
+		e: React.MouseEvent<HTMLImageElement | HTMLSpanElement, MouseEvent>,
+		callback: (element: INode) => void,
+	) => {
 		e.stopPropagation();
-		cb(node.id);
-	}
+		callback(node.id);
+	};
 
 	const renderField = (field: any) => {
 		switch (field.type) {
@@ -47,43 +45,47 @@ const BTableNode = (props: IBTableNodeProps) => {
 		if (!action?.template) {
 			switch (action.type) {
 				case 'save':
-					return <img
-						src={saveIcon}
-						alt='save'
-						onClick={(e) => handlerActionClick(e, action.method)}
-						className={styles['node-actions-icon']}
-					/>
+					return (
+						<img
+							src={saveIcon}
+							alt='save'
+							className={styles['node-actions-icon']}
+							onClick={(e) => actionClickHandler(e, action.method)}
+						/>
+					);
 				case 'edit':
-					return <img
-						src={editIcon}
-						alt='edit'
-						onClick={(e) => handlerActionClick(e, action.method)}
-						className={styles['node-actions-icon']}
-					/>
+					return (
+						<img
+							src={editIcon}
+							alt='edit'
+							className={styles['node-actions-icon']}
+							onClick={(e) => actionClickHandler(e, action.method)}
+						/>
+					);
 				case 'delete':
-					return <img
-						src={deleteIcon}
-						alt='delete'
-						onClick={(e) => handlerActionClick(e, action.method)}
-						className={styles['node-actions-icon']}
-					/>
+					return (
+						<img
+							src={deleteIcon}
+							alt='delete'
+							className={styles['node-actions-icon']}
+							onClick={(e) => actionClickHandler(e, action.method)}
+						/>
+					);
 				default:
-					return <span onClick={(e) => handlerActionClick(e, action.method)}>{action.type}</span>
+					return <span onClick={(e) => actionClickHandler(e, action.method)}>{action.type}</span>;
 			}
 		}
 		return action?.template;
 	};
 
 	return (
-		<tr style={styleNode} onClick={(e) => handlerRowClick(e)}>
+		<tr style={styleNode} onClick={(e) => rowClickHandler(e)}>
 			{fields?.map((field, index) => <td key={index}>{renderField(field)}</td>)}
-			{actions?.length &&
+			{actions?.length && (
 				<td>
-					<div className={styles['node-actions']}>
-						{actions.map(item => renderAction(item))}
-					</div>
+					<div className={styles['node-actions']}>{actions.map((item) => renderAction(item))}</div>
 				</td>
-			}
+			)}
 		</tr>
 	);
 };

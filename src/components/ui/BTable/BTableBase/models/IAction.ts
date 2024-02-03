@@ -1,5 +1,5 @@
 export interface IAction {
-	method: (el?: any) => void;
+	method: (element?: any) => void;
 	type: string;
 	template?: JSX.Element;
 }

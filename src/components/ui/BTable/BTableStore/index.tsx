@@ -1,13 +1,13 @@
 import React from 'react';
 import BTableBase from '../BTableBase';
 import { IAction } from '../BTableBase/models/IAction';
-import { IField, IFootField } from '../BTableBase/models/IField';
+import { ITableField, ITableFooterField } from '../BTableBase/models/ITableField';
 import { ITableOptions } from '../BTableBase/models/ITableOptions';
 
 interface IBTableStoreProps {
 	data: any[];
-	fields: IField[];
-	footFields?: IFootField[];
+	fields: ITableField[];
+	footFields?: ITableFooterField[];
 	actions?: IAction[];
 	count?: number;
 	perPage?: number;
@@ -20,7 +20,6 @@ interface IBTableStoreProps {
 	styleNode?: React.CSSProperties;
 }
 
-/* eslint-disable */
 const BTableStore = (props: IBTableStoreProps) => {
 	const {
 		data,

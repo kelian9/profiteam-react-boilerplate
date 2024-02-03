@@ -1,11 +1,11 @@
 import { IAction } from './IAction';
-import { IField, IFootField } from './IField';
+import { ITableField, ITableFooterField } from './ITableField';
 import { ITableOptions } from './ITableOptions';
 
 interface IBTableBaseProps {
 	data: any[];
-	fields: IField[];
-	footFields?: IFootField[];
+	fields: ITableField[];
+	footFields?: ITableFooterField[];
 	actions?: IAction[];
 	count?: number;
 	perPage?: number;

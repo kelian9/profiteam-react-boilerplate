@@ -5,7 +5,6 @@ export interface ITableOptions {
 	};
 	sort?: {
 		enabled: boolean;
-		// Продумать, что мб в sortData
 		method?: (sortData: any) => void;
 	};
 }

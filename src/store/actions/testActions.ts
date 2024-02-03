@@ -1,7 +1,6 @@
 import testAPI from '@api/testAPI';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-/* eslint-disable */
 const testActions = {
 	getData: createAsyncThunk('test/getData', async (_, { getState }) => {
 		const test = getState().test;

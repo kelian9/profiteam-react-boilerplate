@@ -1,9 +1,9 @@
 import { IAction } from './IAction';
-import { IField } from './IField';
+import { ITableField } from './ITableField';
 
 interface IBTableNodeProps {
 	node: any;
-	fields: IField[];
+	fields: ITableField[];
 	actions?: IAction[];
 	rowClick?: (item?: any) => void;
 	styleNode?: React.CSSProperties;
