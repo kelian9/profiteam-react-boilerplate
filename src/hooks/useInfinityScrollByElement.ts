@@ -2,7 +2,7 @@ import { throttle } from 'lodash';
 import React from 'react';
 import useSyncToRef from './useSyncToRef';
 
-interface UseInfinityScrollByElementConfig {
+export interface UseInfinityScrollByElementConfig {
 	loading: boolean;
 	hasNextPage: boolean;
 	targetElementThresholdPercent?: number;
@@ -13,7 +13,7 @@ interface UseInfinityScrollByElementConfig {
 
 type TargetElement = HTMLElement | null | undefined;
 
-function useScrollListener({
+function useScrollListenerByElement({
 	targetElement,
 	hasNextPage,
 	loading,
@@ -69,7 +69,7 @@ function useInfinityScrollByElement({
 	scrollCheckInterval = 200,
 	targetElementThresholdPercent = 0,
 	loading,
-	startObservingDelay = 0,
+	startObservingDelay = 500,
 	hasNextPage,
 	onLoadMore,
 }: UseInfinityScrollByElementConfig) {
@@ -78,7 +78,7 @@ function useInfinityScrollByElement({
 	const hasNextPageRef = useSyncToRef(hasNextPage);
 	const onLoadMoreRef = useSyncToRef(onLoadMore);
 
-	useScrollListener({
+	useScrollListenerByElement({
 		targetElement,
 		targetElementThresholdPercent,
 		startObservingDelay,
