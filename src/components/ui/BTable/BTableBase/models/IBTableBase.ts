@@ -2,15 +2,15 @@ import { IAction } from './IAction';
 import { ITableField, ITableFooterField } from './ITableField';
 import { ITableOptions } from './ITableOptions';
 
-interface IBTableBaseProps {
-	data: any[];
+interface IBTableBaseProps<T> {
+	data: T[];
 	fields: ITableField[];
 	footFields?: ITableFooterField[];
-	actions?: IAction[];
+	actions?: IAction<T>[];
 	count?: number;
 	perPage?: number;
 	curPage?: number;
-	getData?: (data?: any) => any;
+	getData?: (...args: any[]) => void;
 	resetPagination?: () => void;
 	rowClick?: (itemId?: number | string) => void;
 	listOptions?: ITableOptions;

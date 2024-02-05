@@ -1,3 +1,4 @@
+import IErrorResponse from '@models/responses/IErrorResponse';
 import { AxiosResponse } from 'axios';
 import React, { useEffect, useState } from 'react';
 import BTableBase from '../BTableBase';
@@ -7,10 +8,10 @@ import { ITableOptions } from '../BTableBase/models/ITableOptions';
 
 interface IBTableProps<T> {
 	fields: ITableField[];
+	getData: (...args: any[]) => Promise<AxiosResponse<T[] | IErrorResponse> | T[]>;
 	footFields?: ITableFooterField[];
-	actions?: IAction[];
+	actions?: IAction<T>[];
 	perPage?: number;
-	getData?: (...args: any) => Promise<AxiosResponse | T>;
 	rowClick?: (item?: number | string) => void;
 	listOptions?: ITableOptions;
 	style?: React.CSSProperties;
@@ -20,21 +21,20 @@ interface IBTableProps<T> {
 const BTable = <T extends object>(props: IBTableProps<T>) => {
 	const { fields, footFields, actions, perPage, getData, rowClick, listOptions, style, styleNode } = props;
 
-	const [data, setData] = useState<any[]>([]);
+	const [data, setData] = useState<T[]>([]);
 	const [sortData, setSortData] = useState<any>();
 	const [count, setCount] = useState<number>(10);
 	const [curPage, setCurPage] = useState<number>(1);
 
 	const fetchData = () => {
-		if (!getData) return;
 		const data = {
 			...sortData,
 			_page: curPage,
-			_limit: 10,
+			_limit: perPage,
 		};
 		getData(data)
 			.then((response: any) => {
-				setData(response.data.results as any[]);
+				setData(response.data.results as T[]);
 				setCount(response.data.count as number);
 			})
 			.catch((error: any) => {

@@ -4,15 +4,15 @@ import { IAction } from '../BTableBase/models/IAction';
 import { ITableField, ITableFooterField } from '../BTableBase/models/ITableField';
 import { ITableOptions } from '../BTableBase/models/ITableOptions';
 
-interface IBTableStoreProps {
-	data: any[];
+interface IBTableStoreProps<T> {
+	data: T[];
 	fields: ITableField[];
+	getData: (...args: any[]) => void;
 	footFields?: ITableFooterField[];
-	actions?: IAction[];
+	actions?: IAction<T>[];
 	count?: number;
 	perPage?: number;
 	curPage?: number;
-	getData?: (data?: any) => any;
 	resetPagination?: () => void;
 	rowClick?: (item?: number | string) => void;
 	listOptions?: ITableOptions;
@@ -20,7 +20,7 @@ interface IBTableStoreProps {
 	styleNode?: React.CSSProperties;
 }
 
-const BTableStore = (props: IBTableStoreProps) => {
+const BTableStore = <T extends object>(props: IBTableStoreProps<T>) => {
 	const {
 		data,
 		fields,

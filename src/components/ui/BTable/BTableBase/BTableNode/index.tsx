@@ -3,25 +3,28 @@ import deleteIcon from '../../../../../assets/images/icons/delete-icon.svg';
 import editIcon from '../../../../../assets/images/icons/edit-icon.svg';
 import saveIcon from '../../../../../assets/images/icons/save-icon.svg';
 import BSelect from '../../../../../components/ui/BSelect';
+import { IAction } from '../models/IAction';
 import IBTableNodeProps from '../models/IBTableNode';
 import styles from './style.module.scss';
 
-const BTableNode = (props: IBTableNodeProps) => {
+type INodeBase = {
+	[key: string]: any;
+};
+
+const BTableNode = <T extends INodeBase>(props: IBTableNodeProps<T>) => {
 	const { node, fields, actions, rowClick, styleNode } = props;
-	type INode = ReturnType<typeof node>['node'];
 
 	const rowClickHandler = (e: React.MouseEvent<HTMLTableRowElement, MouseEvent>) => {
 		e.stopPropagation();
-		if (rowClick) rowClick(node.id);
+		if (rowClick) rowClick(node.id as number | string);
 	};
 
-	/* eslint-disable */
 	const actionClickHandler = (
 		e: React.MouseEvent<HTMLImageElement | HTMLSpanElement, MouseEvent>,
-		callback: (element: INode) => void,
+		callback: (element: T) => void,
 	) => {
 		e.stopPropagation();
-		callback(node.id);
+		callback(node);
 	};
 
 	const renderField = (field: any) => {
@@ -41,7 +44,7 @@ const BTableNode = (props: IBTableNodeProps) => {
 		}
 	};
 
-	const renderAction = (action: any) => {
+	const renderAction = (action: IAction<T>) => {
 		if (!action?.template) {
 			switch (action.type) {
 				case 'save':

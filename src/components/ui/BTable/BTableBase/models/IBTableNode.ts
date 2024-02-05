@@ -1,11 +1,11 @@
 import { IAction } from './IAction';
 import { ITableField } from './ITableField';
 
-interface IBTableNodeProps {
-	node: any;
+interface IBTableNodeProps<T> {
+	node: T;
 	fields: ITableField[];
-	actions?: IAction[];
-	rowClick?: (item?: any) => void;
+	actions?: IAction<T>[];
+	rowClick?: (itemId?: number | string) => void;
 	styleNode?: React.CSSProperties;
 }
 

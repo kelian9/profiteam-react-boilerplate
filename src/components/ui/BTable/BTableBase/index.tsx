@@ -6,7 +6,7 @@ import BTableNode from './BTableNode';
 import IBTableBaseProps from './models/IBTableBase';
 import styles from './style.module.scss';
 
-const BTableBase = (props: IBTableBaseProps) => {
+const BTableBase = <T extends object>(props: IBTableBaseProps<T>) => {
 	const {
 		data,
 		fields,
@@ -79,7 +79,7 @@ const BTableBase = (props: IBTableBaseProps) => {
 				</thead>
 				<tbody>
 					{data?.map((item, index) => (
-						<BTableNode
+						<BTableNode<T>
 							key={index}
 							node={item}
 							fields={fields}
