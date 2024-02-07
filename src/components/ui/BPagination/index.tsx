@@ -67,17 +67,17 @@ const BPagination = (props: BPaginationPropsTypes) => {
 	const handleNextClick = () => {
 		if (curPage < Number(pages.at(-1))) {
 			setCurrentPage(curPage + 1);
+			handlePageChange(curPage + 1);
 			if (Number(pages.at(-1)) - curPage > 3) prepareVisibleBtnsArray(curPage + 1);
 		}
-		handlePageChange(curPage + 1);
 	}
 
 	const handlePrevClick = () => {
 		if (curPage - 1 > 0) {
 			setCurrentPage(curPage - 1);
+			handlePageChange(curPage - 1);
 			if (Number(pages.at(-1)) - curPage > 3) prepareVisibleBtnsArray(curPage - 1);
 		} else setCurrentPage(1)
-		handlePageChange(curPage - 1);
 	}
 
 	const renderVisibleBtnsArray = () => {
@@ -85,6 +85,7 @@ const BPagination = (props: BPaginationPropsTypes) => {
 			return (
 				<button
 					key={index}
+					data-testid={'pageControl' + page}
 					style={{ borderRadius: prepareBtnShape(), opacity: showCurrentBtn(+page) }}
 					onClick={() => handleClickOnPage(page, disabled)}
 				>
@@ -119,6 +120,7 @@ const BPagination = (props: BPaginationPropsTypes) => {
 
 	return (
 		<div
+			data-testid='BPagination'
 			style={{
 				opacity: disabled ? 0.6 : 1,
 				position: 'relative',
@@ -142,6 +144,7 @@ const BPagination = (props: BPaginationPropsTypes) => {
 				? <img
 					src={ArrowIcon}
 					alt="arrow icon"
+					data-testid="KeyboardArrowLeftIcon"
 					style={{ opacity: curPage === 1 ? 0.5 : 1, width: '25px', transform: 'rotate(180deg)', }}
 					onClick={handlePrevClick}
 				/>
@@ -154,6 +157,7 @@ const BPagination = (props: BPaginationPropsTypes) => {
 				? <img
 					src={ArrowIcon}
 					alt="arrow icon"
+					data-testid="KeyboardArrowRightIcon"
 					style={{ opacity: curPage === pageCount ? 0.5 : 1, width: '25px' }}
 					onClick={handleNextClick}
 				/>

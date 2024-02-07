@@ -1,18 +1,19 @@
 import FilterFieldType from '@models/enums/FilterFieldType';
 
-export interface IGeneralFilterField {
-	fieldType: FilterFieldType;
+export interface IGeneralFilterField<V> {
+	fieldType?: FilterFieldType;
 	id?: string;
-	name: string;
+	name?: string;
 	keyName: string;
 	placeholder?: string;
 	label?: React.ReactNode;
 	style?: React.CSSProperties;
-	value: any;
+	value: V;
+	onChange?: (value: V | null) => void;
 }
 
-export interface IFilterSelect<T, V = number> extends IGeneralFilterField {
-	multiple: boolean;
+export interface IFilterSelect<T, V = number> extends IGeneralFilterField<V> {
+	multiple?: boolean;
 	value: V;
 	disabled?: boolean;
 	reduceListItem: (elem: T) => React.ReactNode;
@@ -23,32 +24,44 @@ export interface IFilterSelect<T, V = number> extends IGeneralFilterField {
 	filterable?: boolean;
 	searchQueryParam?: string;
 	createMethod?: Function;
-	onChange: (value: V | null) => void;
+	onChange?: (value: V | null) => void;
 }
 
-export interface IFilterDatePicker extends IGeneralFilterField {
+export interface IFilterDatePicker extends IGeneralFilterField<string | Date | null> {
 	format?: string;
 	value: string | Date;
+	onChange?: (value: string | Date | null) => void;
 }
 
-export interface IFilterCheckbox extends IGeneralFilterField {
+export interface IFilterCheckbox extends IGeneralFilterField<boolean | null> {
 	color?: string;
 	value: boolean;
+	onChange?: (value: boolean | null) => void;
 }
 
-export interface IFilterRadio extends IGeneralFilterField {
+export interface IFilterRadio extends IGeneralFilterField<string | null> {
 	text: string;
 	value: string;
+	onChange?: (value: string | null) => void;
 }
 
-export interface IFilterInput extends IGeneralFilterField {
-	type: string;
+export interface IFilterInput extends IGeneralFilterField<string> {
+	type?: string;
 	value: string;
+	onChange?: (value: string | null) => void;
 }
 
-export interface IFilterFieldComponent extends IGeneralFilterField {
-	component: React.ReactNode;
-	value: any;
+export interface IFilterFieldComponent {
+	component: (field: IGeneralFilterField<any> & { key: string }) => React.ReactNode;
+	fieldType?: FilterFieldType;
+	id?: string;
+	name?: string;
+	keyName: string;
+	placeholder?: string;
+	label?: React.ReactNode;
+	style?: React.CSSProperties;
+	value?: any;
+	onChange?: (value: any) => void;
 }
 
 type IFilterField =
