@@ -53,15 +53,17 @@
 			"@assets/*": [
 				"./src/assets/*"
 			],
-		}
+		},
 	},
 	"include": [
 		"src",
-		"declarations.d.ts"
+		"declarations.d.ts",
+		// "src/components/ui/BSelect/test.spec.cy.tsx",
 	],
 	"exclude": [
 		"node_modules",
-		"src/**/*.test.ts",
+		"src/**/*.spec.cy.ts",
+		"src/**/*.spec.cy.tsx",
 		"cypress/*"
 	]
 }

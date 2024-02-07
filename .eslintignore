@@ -2,3 +2,5 @@ node_modules
 dist
 *.js
 *.json
+src/**/*/test.spec.cy.tsx
+cypress

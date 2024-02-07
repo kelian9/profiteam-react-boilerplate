@@ -1,8 +1,23 @@
 /// <reference types="cypress" />
 
 import "@4tw/cypress-drag-drop";
+import '@testing-library/cypress/add-commands';
 import "cypress-file-upload";
 import "cypress-localstorage-commands";
+import { mount } from "cypress/react";
+
+declare global {
+	namespace Cypress {
+		interface Chainable<Subject> {
+			mount: typeof mount;
+			getByTestId(value: string): Chainable<Subject>;
+			closePopups: () => void;
+			clickNextPage: () => void;
+			clickPreviousPage: () => void;
+			validateInputValue: (selector: string, value: any) => void;
+		}
+	}
+}
 
 const specialSymbols = ["^", "*", "$"];
 
@@ -35,21 +50,17 @@ Cypress.Commands.add("closePopups", () => {
 	cy.get("body").trigger("keyup", { keyCode: 27 });
 });
 
+Cypress.Commands.add("clickNextPage", () => {
+	cy.getByTestId("KeyboardArrowRightIcon").first().click();
+});
+
+Cypress.Commands.add("clickPreviousPage", () => {
+	cy.getByTestId("KeyboardArrowLeftIcon").first().click();
+});
+
 // testid is set on TextField usually, so to check value need to dig into underlying input
 Cypress.Commands.add("validateInputValue", (selector: string, value: any) => {
 	cy.getByTestId(selector).within(() => {
 		cy.get("input").should("have.value", value);
 	});
 });
-
-declare global {
-	namespace Cypress {
-		interface Chainable<Subject> {
-			getByTestId(value: string): Chainable<Subject>;
-			closePopups: () => void;
-			clickNextPage: () => void;
-			clickPreviousPage: () => void;
-			validateInputValue: (selector: string, value: any) => void;
-		}
-	}
-}

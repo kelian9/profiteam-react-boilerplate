@@ -1,9 +1,12 @@
 {
 	"include": [
 		"../node_modules/cypress",
-		"*/*.ts"
+		"support/*.ts",
+		"*/*.ts",
+		"../src/**/*/test.spec.cy.tsx",
 	],
 	"compilerOptions": {
+		"jsx": "react",
 		"baseUrl": "..",
 		"paths": {
 			"@api/*": [
@@ -17,6 +20,8 @@
 		"esModuleInterop": true,
 		"types": [
 			"cypress",
+			"@testing-library/cypress",
+			"node",
 			"@4tw/cypress-drag-drop",
 			"cypress-file-upload"
 		]
