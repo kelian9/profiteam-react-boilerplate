@@ -55,7 +55,7 @@ describe('<BFilter />', () => {
 				filterFields={filterFields}
 				redefineValuesDep={false}
 				realTime={false}
-				onChange={(e) => filterParams = e}
+				onChange={(e) => e ? filterParams = e : null}
 			/>
 		);
 		cy.getByTestId('BFilter').should('exist');
@@ -67,7 +67,7 @@ describe('<BFilter />', () => {
 				filterFields={filterFields}
 				redefineValuesDep={false}
 				realTime={true}
-				onChange={(e) => filterParams = e}
+				onChange={(e) => e ? filterParams = e : filterParams}
 			/>
 		);
 

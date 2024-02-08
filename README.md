@@ -1,6 +1,14 @@
+<img src="https://disk.yandex.ru/i/11ADJZK3XbGnFg" alt="profiteam react boilerplate banner" align="center" />
+
+<br />
+
 # profiteam-react-boilerplate
 🔥 A highly scalable foundation with the best developer experience and a focus on performance and our best practices.
 ## Features
+
+<div align="center">
+  <sub>Created by <a href="t.me/kelian9">Profiteam</a>.</sub>
+</div>
 
 <dl>
   <dt>Quick scaffolding</dt>
@@ -24,3 +32,19 @@
   <dt>Test coverage</dt>
   <dd></dd>
 </dl>
+
+<sub><i>Keywords: React.js, Redux, redux-toolkit, Hot Reloading, ESNext, Babel, react-router, Webpack5, Cypress, Sass/Scss</i></sub>
+
+## Quick start
+
+1.  Make sure that you have Node.js v16.16.0 and npm v8 or above installed.
+2.  Clone this repo using `git clone --depth=1 https://github.com/kelian9/profiteam-react-boilerplate.git <YOUR_PROJECT_NAME>`
+3.  Move to the appropriate directory: `cd <YOUR_PROJECT_NAME>`.<br />
+4.  Run `npm run setup` in order to install dependencies and clean the git repo.<br />
+    _At this point you can run `npm start` to see the example app at `http://localhost:8080`._
+
+Now you're ready to work!
+
+## License
+
+This project is licensed under the MIT license, Copyright (c) 2023 Aleksandr Karibov. For more information see `LICENSE.md`.

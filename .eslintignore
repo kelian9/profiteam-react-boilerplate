@@ -4,3 +4,4 @@ dist
 *.json
 src/**/*/test.spec.cy.tsx
 cypress
+scripts/**/*/*.tsx.hbs
