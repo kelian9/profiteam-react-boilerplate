@@ -12,7 +12,7 @@
 
 <dl>
   <dt>Quick scaffolding</dt>
-  <dd>Create components, containers, routes, selectors - and their tests - right from the CLI!</dd>
+  <dd>Create components, routes, selectors, entities - and their tests - right from the CLI!</dd>
 
   <dt>DX</dt>
   <dd>Enjoy the best DX (Developer eXperience) and code your app at the speed of thought! Your saved changes to the CSS and JS are reflected instantaneously without refreshing the page. Preserve application state even when you update something in the underlying code!</dd>
@@ -30,7 +30,7 @@
   <dd>Focus on writing new features without worrying about formatting or code quality. With the right editor setup, your code will automatically be formatted and linted as you work.</dd>
 
   <dt>Test coverage</dt>
-  <dd></dd>
+  <dd>We strive for 100% test coverage.</dd>
 </dl>
 
 <sub><i>Keywords: React.js, Redux, redux-toolkit, Hot Reloading, ESNext, Babel, react-router, Webpack5, Cypress, Sass/Scss</i></sub>
