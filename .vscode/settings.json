@@ -1,6 +1,12 @@
 {
 	"editor.formatOnSave": true,
 	"editor.formatOnPaste": true,
+	"files.associations": {
+		".hbs": "plaintext"
+	},
+	"[handlebars]": {
+		"editor.formatOnSave": false
+	},
 	"editor.codeActionsOnSave": {
 		"source.organizeImports": "always",
 		"source.fixAll.eslint": "always"

@@ -58,7 +58,6 @@
 	"include": [
 		"src",
 		"declarations.d.ts",
-		// "src/components/ui/BSelect/test.spec.cy.tsx",
 	],
 	"exclude": [
 		"node_modules",
