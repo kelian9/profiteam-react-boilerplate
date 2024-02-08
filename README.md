@@ -1,8 +1,8 @@
-<div style="display: flex; align-items: center;>
+<div style="display: flex;>
 	<img src="https://github.com/kelian9/profiteam-react-boilerplate-brand/blob/main/assets/boilerplate.png" alt="profiteam react boilerplate banner" align="center" style="width: 170px; height: 179.68px;" />
 	<br />
 	<br />
-	Profiteam-react-boilerplate
+	<span align="center>Profiteam-react-boilerplate</span>
 </div>
 <br />
 
