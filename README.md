@@ -1,14 +1,15 @@
-<img src="https://disk.yandex.ru/i/11ADJZK3XbGnFg" alt="profiteam react boilerplate banner" align="center" />
+<img src="https://github.com/kelian9/profiteam-react-boilerplate-brand/blob/main/assets/boilerplate.png" alt="profiteam react boilerplate banner" align="center" />
 
 <br />
 
 # profiteam-react-boilerplate
 🔥 A highly scalable foundation with the best developer experience and a focus on performance and our best practices.
-## Features
 
 <div align="center">
   <sub>Created by <a href="t.me/kelian9">Profiteam</a>.</sub>
 </div>
+
+## Features
 
 <dl>
   <dt>Quick scaffolding</dt>
