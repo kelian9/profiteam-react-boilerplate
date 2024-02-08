@@ -1,8 +1,11 @@
-<img src="https://github.com/kelian9/profiteam-react-boilerplate-brand/blob/main/assets/boilerplate.png" alt="profiteam react boilerplate banner" align="center" style="width: 170px; height: 179.68px;" />
-
+<div>
+	<img src="https://github.com/kelian9/profiteam-react-boilerplate-brand/blob/main/assets/boilerplate.png" alt="profiteam react boilerplate banner" align="center" style="width: 170px; height: 179.68px;" />
+	<br />
+	<br />
+	Profiteam-react-boilerplate
+</div>
 <br />
 
-# profiteam-react-boilerplate
 🔥 A highly scalable foundation with the best developer experience and a focus on performance and our best practices.
 
 <div align="center">
