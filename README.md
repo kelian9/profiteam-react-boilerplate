@@ -2,7 +2,7 @@
 	<img src="https://github.com/kelian9/profiteam-react-boilerplate-brand/blob/main/assets/boilerplate.png" alt="profiteam react boilerplate banner" align="center" style="width: 170px; height: 179.68px;" />
 	<br />
 	<br />
-	<span align="center>Profiteam-react-boilerplate</span>
+	Profiteam-react-boilerplate
 </h2>
 <br />
 
