@@ -1,3 +1,5 @@
+import FieldType from '@models/enums/FieldTypeEnum';
+import TableActionType from '@models/enums/TableActionTypesEnum';
 import React from 'react';
 import deleteIcon from '../../../../../assets/images/icons/delete-icon.svg';
 import editIcon from '../../../../../assets/images/icons/edit-icon.svg';
@@ -29,15 +31,17 @@ const BTableNode = <T extends INodeBase>(props: IBTableNodeProps<T>) => {
 
 	const renderField = (field: any) => {
 		switch (field.type) {
-			case 'select':
+			case FieldType.SELECT:
 				return <BSelect {...field.props}></BSelect>;
-			case 'input':
+			case FieldType.INPUT:
 				return <input {...field.props}></input>;
-			case 'datepicker':
+			case FieldType.DATEPICKER:
 				return <input type='date' {...field.props}></input>;
-			case 'checkbox':
+			case FieldType.CHECKBOX:
 				return <input type='checkbox' {...field.props}></input>;
-			case 'custom':
+			case FieldType.RADIO:
+				return <input type='radio' {...field.props}></input>;
+			case FieldType.COMPONENT:
 				return field.template;
 			default:
 				return <span {...field.props}>{node[field.key]}</span>;
@@ -47,27 +51,30 @@ const BTableNode = <T extends INodeBase>(props: IBTableNodeProps<T>) => {
 	const renderAction = (action: IAction<T>) => {
 		if (!action?.template) {
 			switch (action.type) {
-				case 'save':
+				case TableActionType.SAVE:
 					return (
 						<img
+							key={action.type}
 							src={saveIcon}
 							alt='save'
 							className={styles['node-actions-icon']}
 							onClick={(e) => actionClickHandler(e, action.method)}
 						/>
 					);
-				case 'edit':
+				case TableActionType.EDIT:
 					return (
 						<img
+							key={action.type}
 							src={editIcon}
 							alt='edit'
 							className={styles['node-actions-icon']}
 							onClick={(e) => actionClickHandler(e, action.method)}
 						/>
 					);
-				case 'delete':
+				case TableActionType.DELETE:
 					return (
 						<img
+							key={action.type}
 							src={deleteIcon}
 							alt='delete'
 							className={styles['node-actions-icon']}
@@ -75,7 +82,7 @@ const BTableNode = <T extends INodeBase>(props: IBTableNodeProps<T>) => {
 						/>
 					);
 				default:
-					return <span onClick={(e) => actionClickHandler(e, action.method)}>{action.type}</span>;
+					break;
 			}
 		}
 		return action?.template;
@@ -84,9 +91,11 @@ const BTableNode = <T extends INodeBase>(props: IBTableNodeProps<T>) => {
 	return (
 		<tr style={styleNode} onClick={(e) => rowClickHandler(e)}>
 			{fields?.map((field, index) => <td key={index}>{renderField(field)}</td>)}
-			{actions?.length && (
+			{actions && (
 				<td>
-					<div className={styles['node-actions']}>{actions.map((item) => renderAction(item))}</div>
+					<div className={styles['node-actions']}>
+						{actions.map((item: IAction<T>) => renderAction(item))}
+					</div>
 				</td>
 			)}
 		</tr>
