@@ -1,4 +1,4 @@
-<img src="https://github.com/kelian9/profiteam-react-boilerplate-brand/blob/main/assets/boilerplate.png" alt="profiteam react boilerplate banner" align="center" float="left" style="width: 170px; height: 179.68px;" />
+<img src="https://github.com/kelian9/profiteam-react-boilerplate-brand/blob/main/assets/boilerplate.png" alt="profiteam react boilerplate banner" align="center" style="width: 170px; height: 179.68px;" />
 
 ## Profiteam-react-boilerplate
 
@@ -11,10 +11,10 @@
 ## Features
 
 <dl>
-  <dt>Quick scaffolding</dt>
-  <dd>Create components, routes, selectors, entities - and their tests - right from the CLI!</dd>
+  <dt>Command Line Interface</dt>
+  <dd>Create components, routes, entities - and their tests - right from the CLI!</dd>
 
-  <dt>DX</dt>
+  <dt>Best Practices</dt>
   <dd>Enjoy the best DX (Developer eXperience) and code your app at the speed of thought! Your saved changes to the CSS and JS are reflected instantaneously without refreshing the page. Preserve application state even when you update something in the underlying code!</dd>
 
   <dt>Predictable state management</dt>
