@@ -50,8 +50,10 @@ const BTableNode = <T extends INodeBase>(props: IBTableNodeProps<T>) => {
 				case 'save':
 					return (
 						<img
+							key='save'
 							src={saveIcon}
 							alt='save'
+							data-testid={`BTableNode-${node.id}-save`}
 							className={styles['node-actions-icon']}
 							onClick={(e) => actionClickHandler(e, action.method)}
 						/>
@@ -59,8 +61,10 @@ const BTableNode = <T extends INodeBase>(props: IBTableNodeProps<T>) => {
 				case 'edit':
 					return (
 						<img
+							key='edit'
 							src={editIcon}
 							alt='edit'
+							data-testid={`BTableNode-${node.id}-edit`}
 							className={styles['node-actions-icon']}
 							onClick={(e) => actionClickHandler(e, action.method)}
 						/>
@@ -68,22 +72,36 @@ const BTableNode = <T extends INodeBase>(props: IBTableNodeProps<T>) => {
 				case 'delete':
 					return (
 						<img
+							key='delete'
 							src={deleteIcon}
 							alt='delete'
+							data-testid={`BTableNode-${node.id}-delete`}
 							className={styles['node-actions-icon']}
 							onClick={(e) => actionClickHandler(e, action.method)}
 						/>
 					);
 				default:
-					return <span onClick={(e) => actionClickHandler(e, action.method)}>{action.type}</span>;
+					return (
+						<span
+							key={action.type}
+							data-testid={`BTableNode-${node.id}-${action.type}`}
+							onClick={(e) => actionClickHandler(e, action.method)}
+						>
+							{action.type}
+						</span>
+					);
 			}
 		}
 		return action?.template;
 	};
 
 	return (
-		<tr style={styleNode} onClick={(e) => rowClickHandler(e)}>
-			{fields?.map((field, index) => <td key={index}>{renderField(field)}</td>)}
+		<tr data-testid={'BTableNode-' + node.id} style={styleNode} onClick={(e) => rowClickHandler(e)}>
+			{fields?.map((field, index) => (
+				<td key={`BTableNode-${node.id}-field-${index}`} data-testid={`BTableNode-${node.id}-field-${index}`}>
+					{renderField(field)}
+				</td>
+			))}
 			{actions?.length && (
 				<td>
 					<div className={styles['node-actions']}>{actions.map((item) => renderAction(item))}</div>
