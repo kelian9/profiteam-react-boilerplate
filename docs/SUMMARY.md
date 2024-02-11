@@ -1,8 +1,8 @@
 # Table of contents
 
 * [README](README.md)
-* [Quick Start](quick-start.md)
-* [Understanding react-boilerplate](understanding-react-boilerplate.md)
+* [Quick Start](README.md)
+* [Understanding react-boilerplate](general/README.md)
 
 ## Tools
 
