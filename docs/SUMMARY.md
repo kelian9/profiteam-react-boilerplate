@@ -1,6 +1,6 @@
 ‌# Summary​
 
-- [Quick Start](README.md#Quickstart)
+- [Quick Start](docs/general/README.md)
 - [Understanding `react-boilerplate`](general/introduction.md)
 
 ## Tools
