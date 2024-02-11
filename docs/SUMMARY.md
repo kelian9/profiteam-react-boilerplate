@@ -1,26 +1,23 @@
-‌# Summary​
+# Table of contents
 
-- [Quick Start](docs/general/README.md)
-- [Understanding `react-boilerplate`](general/introduction.md)
+* [README](README.md)
+* [Quick Start](README.md)
+* [Understanding react-boilerplate](general/README.md)
 
 ## Tools
 
-- [CLI & Scaffolding](general/commands.md)
-- [Editor Configuration](general/editors.md)
-- [Package Managers](general/package-managers.md)
-
-## Structure
-
-
+* [CLI & Scaffolding](general/commands.md)
+* [Editor Configuration](tools/editor-configuration.md)
+* [Package Managers](tools/package-managers.md)
 
 ## Components
 
-- [BFilter](components/BFilter.md)
-- [BPagination](components/BPagination.md)
-- [BSelect](components/BSelect.md)
-- [BTable](components/BTable.md)
+* [BFilter](components/bfilter.md)
+* [BPagination](components/bpagination.md)
+* [BSelect](components/bselect.md)
+* [BTable](components/btable.md)
 
 ## Testing
 
-- [Component Tests](testing/component-tests.md)
-- [E2E Tests](testing/e2e-tests.md)
+* [Component Tests](testing/component-tests.md)
+* [E2E Tests](testing/e2e-tests.md)
