@@ -1,6 +1,6 @@
 # Table of contents
 
-* [README](../README.md)
+<!-- * [README](../README.md) -->
 * [Quick Start](general/quick-start.md)
 * [Understanding react-boilerplate](general/README.md)
 
