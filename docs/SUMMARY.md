@@ -16,6 +16,7 @@
 * [BPagination](components/bpagination.md)
 * [BSelect](components/bselect.md)
 * [BTable](components/btable.md)
+* [BaseCrudPage](components/base-crud-page.md)
 
 ## Testing
 
