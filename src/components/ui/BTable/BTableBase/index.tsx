@@ -8,6 +8,7 @@ import styles from './style.module.scss';
 
 const BTableBase = <T extends object>(props: IBTableBaseProps<T>) => {
 	const {
+		testId,
 		data,
 		fields,
 		footFields,
@@ -57,11 +58,15 @@ const BTableBase = <T extends object>(props: IBTableBaseProps<T>) => {
 
 	return (
 		<>
-			<table className={styles.defaultTable} style={style}>
+			<table data-testid={`BTableBase-${testId}`} className={styles.defaultTable} style={style}>
 				<thead>
 					<tr>
 						{fields?.map((field, index) => (
-							<th key={index} onClick={() => sorting(field.key)}>
+							<th
+								key={index}
+								data-testid={`BTableBase-${testId}-${field.key}`}
+								onClick={() => sorting(field.key)}
+							>
 								<div className={styles.fieldHead}>
 									<span>{field.label}</span>
 									{field.key === sortBy && (

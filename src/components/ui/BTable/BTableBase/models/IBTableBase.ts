@@ -3,6 +3,7 @@ import { ITableField, ITableFooterField } from './ITableField';
 import { ITableOptions } from './ITableOptions';
 
 interface IBTableBaseProps<T> {
+	testId?: string;
 	data: T[];
 	fields: ITableField[];
 	footFields?: ITableFooterField[];
