@@ -11,7 +11,7 @@ interface IBTableStoreProps<T> {
 	footFields?: ITableFooterField[];
 	actions?: IAction<T>[];
 	count?: number;
-	perPage?: number;
+	limit?: number;
 	curPage?: number;
 	resetPagination?: () => void;
 	rowClick?: (item?: number | string) => void;
@@ -27,7 +27,7 @@ const BTableStore = <T extends object>(props: IBTableStoreProps<T>) => {
 		footFields,
 		actions,
 		count,
-		perPage,
+		limit,
 		curPage,
 		getData,
 		resetPagination,
@@ -43,7 +43,7 @@ const BTableStore = <T extends object>(props: IBTableStoreProps<T>) => {
 			footFields={footFields}
 			fields={fields}
 			actions={actions}
-			perPage={perPage}
+			limit={limit}
 			count={count}
 			curPage={curPage}
 			getData={getData}

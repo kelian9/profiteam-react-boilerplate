@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import IErrorResponse from '../../../../models/responses/IErrorResponse';
+import IErrorResponse from './responses/IErrorResponse';
 
 interface IMethods<T> {
 	filter: ((...args: any[]) => Promise<AxiosResponse<T[] | IErrorResponse>>) | ((...args: any[]) => void);

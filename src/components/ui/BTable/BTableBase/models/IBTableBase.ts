@@ -8,7 +8,7 @@ interface IBTableBaseProps<T> {
 	footFields?: ITableFooterField[];
 	actions?: IAction<T>[];
 	count?: number;
-	perPage?: number;
+	limit?: number;
 	curPage?: number;
 	getData?: (...args: any[]) => void;
 	resetPagination?: () => void;

@@ -3,7 +3,7 @@ import { IAction } from 'src/components/ui/BTable/BTableBase/models/IAction';
 import { ITableField, ITableFooterField } from 'src/components/ui/BTable/BTableBase/models/ITableField';
 import { ITableOptions } from 'src/components/ui/BTable/BTableBase/models/ITableOptions';
 
-export interface ISectionTable<T> {
+export interface IEntityTable<T> {
 	type: TableTypes;
 	data?: T[];
 	tableFields: ITableField[];
