@@ -8,7 +8,7 @@
 
 * [CLI & Scaffolding](general/commands.md)
 * [Editor Configuration](tools/editor-configuration.md)
-* [Package Managers](tools/package-managers.md)
+<!-- * [Package Managers](tools/package-managers.md) -->
 
 ## Components
 
