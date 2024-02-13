@@ -9,12 +9,15 @@
 	"scripts": {
 		"prepare": "husky install",
 		"analyze": "node ./scripts/analyze.js",
+		"npmcheckversion": "node ./internals/scripts/npmcheckversion.js",
+		"presetup": "npm i chalk shelljs",
 		"setup": "node ./scripts/setup.js",
 		"start": "webpack serve --mode development --config webpack/dev.js",
 		"start:cypress": "webpack serve --mode development --config webpack/cypress.js",
 		"prebuild": "rimraf dist/",
 		"build": "webpack --config webpack/prod.js",
 		"generate": "plop --plopfile scripts/generators/index.js",
+		"clean": "shjs ./scripts/clean-template.js",
 		"cypress:open": "cypress open --browser chrome --component",
 		"cypress:run": "cypress run --browser chrome",
 		"cypress:waitbundle": "wait-on http://localhost:3001/main.js -t 120000",
@@ -30,6 +33,7 @@
 		"./src/**/*.{js,ts,jsx,tsx}": "eslint --ext .js,.ts,.tsx,.jsx src --fix",
 		"./cypress/**/*.{js,ts,jsx,tsx}": "eslint"
 	},
+	"pre-commit": "lint:staged",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/kelian9/profiteam-react-boilerplate.git"

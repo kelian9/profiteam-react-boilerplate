@@ -58,6 +58,7 @@
 	"include": [
 		"src",
 		"declarations.d.ts",
+		"scripts/templates"
 	],
 	"exclude": [
 		"node_modules",
