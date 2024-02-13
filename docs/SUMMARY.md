@@ -1,7 +1,7 @@
 # Table of contents
 
-* [README](README.md)
-* [Quick Start](README.md)
+<!-- * [README](../README.md) -->
+* [Quick Start](general/quick-start.md)
 * [Understanding react-boilerplate](general/README.md)
 
 ## Tools
@@ -16,6 +16,7 @@
 * [BPagination](components/bpagination.md)
 * [BSelect](components/bselect.md)
 * [BTable](components/btable.md)
+* [BaseCrudPage](components/base-crud-page.md)
 
 ## Testing
 

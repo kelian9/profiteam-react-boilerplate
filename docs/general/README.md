@@ -7,14 +7,6 @@ Using Profiteam React Boilerplate, you get to start your app with our community'
 ideas on what represents optimal developer experience, best practice, most
 efficient tooling and cleanest project structure.
 
-- [**CLI Commands**](commands.md)
-- [Setting up your editor](editor.md)
-- [Tool Configuration](files.md)
-- [Server Configurations](server-configs.md)
-- [Deployment](deployment.md) _(currently Heroku & AWS specific)_
-- [FAQ](faq.md)
-- [Gotchas](gotchas.md)
-
 # Feature overview
 
 ## Quick scaffolding
@@ -28,11 +20,10 @@ everything set up correctly.
 
 [plop]: https://github.com/amwmedia/plop
 
-## Instant feedback
+## Useful components
 
-Enjoy the best DX and code your app at the speed of thought! Your saved changes
-to the CSS and JS are reflected instantaneously without refreshing the page.
-Preserve application state even when you update something in the underlying code!
+A set of very useful components that implement frequently encountered logic, such as the thing we call **CRUD Page**.
+If you need to do a lot of pages with filter and sorting logic, data list as a table with pagination, forms for creation and editing and quit a bit more, please look at the **BaseCrudPage** in components section.
 
 ## Predictable state management
 
