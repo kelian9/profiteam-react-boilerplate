@@ -52,10 +52,10 @@ Just describe filter fields.
 
 Property           | Description                                 | Type                  | Default
 ------------------ | ------------------------------------------- | --------------------- | -------------------
-filterFields       | list of query params for filtration                                          | [```FilterFieldType``](#ifilterfield)         | -
+filterFields       | list of query params for filtration                                          | [```FilterFieldType```](#ifilterfield)         | -
 redefineValuesDep  | BFilter subscribe to this prop changes <br>for redefine local state variable | ```boolean```          | false
 realTime           | call onChange by change any field value or by click to save button  | ```boolean```          | false
-onChange           | Callback that change query params and get data                      | ```(filter: Record<string, any> | null) => void``` | -
+onChange           | Callback that change query params and get data                      | ``` (filter: Record<string, any> | null) => void ``` | -
 
 
 ## IFilterField
@@ -74,7 +74,7 @@ type IFilterField =
 
 Property           | Description                                 | Type                  | Default
 ------------------ | ------------------------------------------- | --------------------- | -------------------
-fieldType          | type of input                               | [```FilterFieldType``](#filterfieldtype)         | -
+fieldType          | type of input                               | [``` FilterFieldType ```](#filterfieldtype)         | -
 id                 | id attribute | ```string```          | ''
 name               | Field name  | ```string```          | ''
 keyName            | query params prop name  | ```string```          | -
@@ -82,7 +82,7 @@ placeholder        | input placeholder  | ```string```          | ''
 label              | input label  | ```React.ReactNode```          | keyName
 style              | css for input  | ```React.CSSProperties```          | undefined
 value              | filter field value that is necessary to (re)define filter object  | ```V```          | -
-onChange           | Callback when input value is changed                      | ```(value: V | null) => void``` | -
+onChange           | Callback when input value is changed                      | ``` (value: V | null) => void ``` | -
 
 ### `FilterFieldType`
 
@@ -107,13 +107,13 @@ Property           | Description                                 | Type         
 multiple                 | ... | ```boolean```          | false
 value                 | query params prop value | ```V```          | -
 disabled               | ...  | ```boolean```          | false
-reduceListItem            | generate list item template  | ```(elem: T) => React.ReactNode``` | -
-reduceElemName        | generate list item name  | ```(elem: T) => string```          | undefined
-reduceValue              | get item value  | ```(elem: T) => V```          | -
+reduceListItem            | generate list item template  | ``` (elem: T) => React.ReactNode ``` | -
+reduceElemName        | generate list item name  | ``` (elem: T) => string ```          | undefined
+reduceValue              | get item value  | ``` (elem: T) => V ```          | -
 getMethod              | callback that will be used for getting data list  | ```Function```          | -
 extraParams              | properties of query params that don't participate in filtration  | ```Object```          | null
 searchQueryParam              | query param that is used for searching  | ```string```          | ''
 createMethod              | callback that will be used for list item creation  | ```Function```          | -
-onChange           | Callback when selected item is changed                      | ```(value: V | null) => void``` | -
+onChange           | Callback when selected item is changed                      | ``` (value: V | null) => void ``` | -
 
 
