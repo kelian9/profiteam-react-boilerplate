@@ -13,7 +13,7 @@ import IFilterField, {
 interface IBFilterProps {
 	filterFields: IFilterField[];
 	redefineValuesDep?: boolean;
-	realTime: boolean;
+	realTime?: boolean;
 	onChange: (filter: Record<string, any> | null) => void;
 }
 
