@@ -133,7 +133,7 @@ const BSelect = <T extends TBase, V = number>(props: IBSelectProps<T, V>) => {
 				>
 					{data.map((elem) => (
 						<li key={String(reduceValue(elem))} data-testid={label + elem.id} onMouseDown={() => handleChange(elem)}>
-							{reduceListItem ? reduceListItem(elem) : elem[reduceElemName ? reduceElemName(elem) : '']}
+							{reduceListItem ? reduceListItem(elem) : (reduceElemName ? reduceElemName(elem) : '')}
 						</li>
 					))}
 				</ul>
