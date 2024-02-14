@@ -1,4 +1,4 @@
-Just describe filter fields.
+Just describe filter fields. Use subclasses of [FilterField](https://github.com/kelian9/profiteam-react-boilerplate/blob/main/src/components/ui/BFilter/FilterField.ts).
 
 ## Example
 ```
@@ -133,4 +133,46 @@ style              | css for input  | ```React.CSSProperties```          | undef
 value              | filter field value that is necessary to (re)define filter object  | ```V```          | 
 onChange           | Callback when value is changed                      | ``` (value: any) => void ``` | 
 
+### `IFilterDatePicker`
 
+IFilterDatePicker extends IGeneralFilterField
+
+Property           | Description                                 | Type                  | Default
+------------------ | ------------------------------------------- | --------------------- | -------------------
+...IGeneralFilterField          | ...                               | ...         | ...
+format                 | ... | ```string```          | `YYYY-MM-DD`
+value                 | query params prop value | ```string \| Date```          | -
+onChange           | Callback when date is changed                      | ``` (value: string \| Date \| null) => void ``` | -
+
+### `IFilterCheckbox`
+
+IFilterCheckbox extends IGeneralFilterField
+
+Property           | Description                                 | Type                  | Default
+------------------ | ------------------------------------------- | --------------------- | -------------------
+...IGeneralFilterField          | ...                               | ...         | ...
+color                 | ... | ```string```          | ```'primary'```
+value                 | query params prop value | ```boolean```          | -
+onChange           | Callback when checkbox is toggled                      | ``` (value: boolean \| null) => void ``` | -
+
+### `IFilterRadio`
+
+IFilterRadio extends IGeneralFilterField
+
+Property           | Description                                 | Type                  | Default
+------------------ | ------------------------------------------- | --------------------- | -------------------
+...IGeneralFilterField          | ...                               | ...         | ...
+text                 | ... | ```string```          | ```'primary'```
+value                 | query params prop value | ```string```          | -
+onChange           | Callback when user selects radio button               | ``` (value: string \| null) => void ``` | -
+
+### `IFilterInput`
+
+IFilterInput extends IGeneralFilterField
+
+Property           | Description                                 | Type                  | Default
+------------------ | ------------------------------------------- | --------------------- | -------------------
+...IGeneralFilterField          | ...                               | ...         | ...
+type                 | input type | ```string```          | ```'text'```
+value                 | query params prop value | ```string```          | -
+onChange           | Callback when user types in input               | ``` (value: string \| null) => void ``` | -
