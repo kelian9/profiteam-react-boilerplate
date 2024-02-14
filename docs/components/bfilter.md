@@ -40,12 +40,14 @@ Just describe filter fields.
 		})
 	];
 
-	<BFilter
-		filterFields={filterFields}
-		redefineValuesDep={redefineValuesDep}
-		realTime={true}
-		onChange={(e: Record<string, any> | null) => filterParams = e}
-	/>
+	return (
+		<BFilter
+			filterFields={filterFields}
+			redefineValuesDep={redefineValuesDep}
+			realTime={true}
+			onChange={(e: Record<string, any> | null) => filterParams = e}
+		/>
+	);
 ```
 
 ### BFilter props
@@ -115,5 +117,20 @@ extraParams              | properties of query params that don't participate in 
 searchQueryParam              | query param that is used for searching  | ```string```          | ''
 createMethod              | callback that will be used for list item creation  | ```Function```          | -
 onChange           | Callback when selected item is changed                      | ``` (value: V \| null) => void ``` | -
+
+### `IFilterFieldComponent`
+
+Property           | Description                                 | Type                  | Default
+------------------ | ------------------------------------------- | --------------------- | -------------------
+component                 | render function (like React.FC) | ```(field: IGeneralFilterField<any> & { key: string }) => React.ReactNode``` | -
+fieldType                 | type of input                | [``` FilterFieldType ```](#filterfieldtype)         | ```FilterFieldType.COMPONENT```
+id                 | id attribute | ```string```          | ''
+name               | Field name  | ```string```          | ''
+keyName            | query params prop name  | ```string```          | -
+placeholder        | input placeholder  | ```string```          | ''
+label              | input label  | ```React.ReactNode```          | keyName
+style              | css for input  | ```React.CSSProperties```          | undefined
+value              | filter field value that is necessary to (re)define filter object  | ```V```          | 
+onChange           | Callback when value is changed                      | ``` (value: any) => void ``` | 
 
 
