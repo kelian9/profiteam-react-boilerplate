@@ -19,8 +19,8 @@
   <dd>Create components, routes, entities - and their tests - right from the CLI!</dd>
 
   <dt>Useful components</dt>
-  <dd>A set of very useful components that implement frequently encountered logic, such as the thing we call **CRUD Page**.
-If you need to do a lot of pages with filter and sorting logic, data list as a table with pagination, forms for creation and editing and quit a bit more, please look at the **BaseCrudPage** in components section.</dd>
+  <dd>A set of very useful components that implement frequently encountered logic, such as the thing we call <b>CRUD Page</b>.
+If you need to do a lot of pages with filter and sorting logic, data list as a table with pagination, forms for creation and editing and quit a bit more, please look at the <b>BaseCrudPage</b> in components section.</dd>
 
   <dt>Best Practices</dt>
   <dd>Enjoy the best DX (Developer eXperience) and code your app at the speed of thought! Your saved changes to the CSS and JS are reflected instantaneously without refreshing the page. Preserve application state even when you update something in the underlying code!</dd>
