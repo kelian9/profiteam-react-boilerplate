@@ -2,21 +2,18 @@
 /* eslint-disable prettier/prettier */
 import ArrowIcon from '@assets/icons/arrow-icon.png';
 import BigStepIcon from '@assets/icons/big-step-arrow-icon.png';
-import BPaginationShape from '@models/enums/BPaginationShapeEnum';
 import React, { useEffect, useState } from 'react';
 
 interface BPaginationPropsTypes {
-	btnShape?: BPaginationShape;
 	disabled?: boolean;
 	pageCount: number;
-	currentPage?: number;
+	currentPage: number;
 	bigStep?: boolean;
 	handlePageChange: (page: number) => void;
 }
 
 const BPagination = (props: BPaginationPropsTypes) => {
 	const {
-		btnShape,
 		disabled,
 		pageCount,
 		currentPage,
@@ -25,11 +22,8 @@ const BPagination = (props: BPaginationPropsTypes) => {
 	} = props;
 
 	const [pages, setPages] = useState<string[]>([]);
-	const [curPage, setCurrentPage] = useState<number>(1);
 
-	const prepareBtnShape = () => btnShape ? '5px' : '50%';
-
-	const showCurrentBtn = (value: number) => value === curPage ? 1 : 0.7;
+	const showCurrentBtn = (value: number) => value === currentPage ? 1 : 0.7;
 
 	const prepareVisibleBtnsArray = (current: number) => {
 		const arrayOfBtnText = [];
@@ -58,26 +52,23 @@ const BPagination = (props: BPaginationPropsTypes) => {
 
 	const handleClickOnPage = (page: string, disabled: boolean | undefined) => {
 		if (disabled) return
-		if (page === String(curPage)) return
-		setCurrentPage(+page)
+		if (page === String(currentPage)) return
 		prepareVisibleBtnsArray(+page)
 		handlePageChange(+page);
 	}
 
 	const handleNextClick = () => {
-		if (curPage < Number(pages.at(-1))) {
-			setCurrentPage(curPage + 1);
-			handlePageChange(curPage + 1);
-			if (Number(pages.at(-1)) - curPage > 3) prepareVisibleBtnsArray(curPage + 1);
+		if (currentPage < Number(pages.at(-1))) {
+			handlePageChange(currentPage + 1);
+			if (Number(pages.at(-1)) - currentPage > 3) prepareVisibleBtnsArray(currentPage + 1);
 		}
 	}
 
 	const handlePrevClick = () => {
-		if (curPage - 1 > 0) {
-			setCurrentPage(curPage - 1);
-			handlePageChange(curPage - 1);
-			if (Number(pages.at(-1)) - curPage > 3) prepareVisibleBtnsArray(curPage - 1);
-		} else setCurrentPage(1)
+		if (currentPage - 1 > 0) {
+			handlePageChange(currentPage - 1);
+			if (Number(pages.at(-1)) - currentPage > 3) prepareVisibleBtnsArray(currentPage - 1);
+		}
 	}
 
 	const renderVisibleBtnsArray = () => {
@@ -86,7 +77,7 @@ const BPagination = (props: BPaginationPropsTypes) => {
 				<button
 					key={index}
 					data-testid={'pageControl' + page}
-					style={{ borderRadius: prepareBtnShape(), opacity: showCurrentBtn(+page) }}
+					style={{ borderRadius: '50%', opacity: showCurrentBtn(+page) }}
 					onClick={() => handleClickOnPage(page, disabled)}
 				>
 					{page}
@@ -98,25 +89,18 @@ const BPagination = (props: BPaginationPropsTypes) => {
 	}
 
 	const doBigStepToLastPage = () => {
-		setCurrentPage(Number(pages.at(-1)));
-		if (Number(pages.at(-1)) - curPage > 3) prepareVisibleBtnsArray(Number(pages.at(-1)) - 3);
+		if (Number(pages.at(-1)) - currentPage > 3) prepareVisibleBtnsArray(Number(pages.at(-1)) - 3);
 		handlePageChange(pageCount);
 	}
 
 	const doBigStepToFirstPage = () => {
-		setCurrentPage(1);
 		prepareVisibleBtnsArray(1);
 		handlePageChange(1);
 	}
 
 	useEffect(() => {
-		prepareVisibleBtnsArray(curPage);
+		prepareVisibleBtnsArray(currentPage);
 	}, [pageCount, currentPage]);
-
-	useEffect(() => {
-		if (currentPage) setCurrentPage(currentPage)
-		else setCurrentPage(1)
-	}, []);
 
 	return (
 		<div
@@ -134,7 +118,7 @@ const BPagination = (props: BPaginationPropsTypes) => {
 				? <img
 					src={BigStepIcon}
 					alt='left arrow image'
-					style={{ opacity: curPage === 1 ? 0.5 : 1, width: '25px', transform: 'rotate(180deg)', }}
+					style={{ opacity: currentPage === 1 ? 0.5 : 1, width: '25px', transform: 'rotate(180deg)', }}
 					onClick={doBigStepToFirstPage}
 				/>
 				: null
@@ -145,7 +129,7 @@ const BPagination = (props: BPaginationPropsTypes) => {
 					src={ArrowIcon}
 					alt="arrow icon"
 					data-testid="KeyboardArrowLeftIcon"
-					style={{ opacity: curPage === 1 ? 0.5 : 1, width: '25px', transform: 'rotate(180deg)', }}
+					style={{ opacity: currentPage === 1 ? 0.5 : 1, width: '25px', transform: 'rotate(180deg)', }}
 					onClick={handlePrevClick}
 				/>
 				: null
@@ -158,7 +142,7 @@ const BPagination = (props: BPaginationPropsTypes) => {
 					src={ArrowIcon}
 					alt="arrow icon"
 					data-testid="KeyboardArrowRightIcon"
-					style={{ opacity: curPage === pageCount ? 0.5 : 1, width: '25px' }}
+					style={{ opacity: currentPage === pageCount ? 0.5 : 1, width: '25px' }}
 					onClick={handleNextClick}
 				/>
 				: null
@@ -168,7 +152,7 @@ const BPagination = (props: BPaginationPropsTypes) => {
 				? <img
 					src={BigStepIcon}
 					alt='right arrow image'
-					style={{ opacity: curPage === pageCount ? 0.5 : 1, width: '25px' }}
+					style={{ opacity: currentPage === pageCount ? 0.5 : 1, width: '25px' }}
 					onClick={doBigStepToLastPage}
 				/>
 				: null
