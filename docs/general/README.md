@@ -7,6 +7,29 @@ Using Profiteam React Boilerplate, you get to start your app with our community'
 ideas on what represents optimal developer experience, best practice, most
 efficient tooling and cleanest project structure.
 
+# Tech Stack
+See a complete list of the dependencies in `package.json`.
+
+## Core
+
+- [ ] [React](https://facebook.github.io/react/)
+- [ ] [React Router](https://github.com/remix-run/react-router)
+- [ ] [Redux](http://redux.js.org/)
+- [ ] [Redux Toolkit](https://redux-toolkit.js.org/)
+- [ ] [TypeScript](https://www.typescriptlang.org/)
+- [ ] [Webpack](https://webpack.js.org/)
+- [ ] [Sass/Scss](https://sass-lang.com/)
+
+## Testing
+
+- [ ] [Cypress](http://facebook.github.io/jest/)
+
+## Linting
+
+- [ ] [ESLint](http://eslint.org/)
+- [ ] [Prettier](https://prettier.io/)
+- [ ] [stylelint](https://stylelint.io/)
+
 # Feature overview
 
 ## Quick scaffolding

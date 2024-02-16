@@ -6,7 +6,7 @@
 
 ## Tools
 
-* [CLI & Scaffolding](general/commands.md)
+* [CLI](general/commands.md)
 * [Editor Configuration](tools/editor-configuration.md)
 <!-- * [Package Managers](tools/package-managers.md) -->
 
