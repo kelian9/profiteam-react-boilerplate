@@ -79,7 +79,7 @@ onChange           | Callback that change query params and get data             
 
 ## IFilterField
 
-```
+```typescript
 type IFilterField =
 	| IFilterInput
 	| IFilterDatePicker
@@ -105,7 +105,7 @@ onChange           | Callback when input value is changed                      |
 
 ### `FilterFieldType`
 
-```
+```typescript
 enum FilterFieldType {
 	DATEPICKER,
 	SELECT,
