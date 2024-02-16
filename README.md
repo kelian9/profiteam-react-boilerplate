@@ -6,6 +6,8 @@
 
 🔥 A highly scalable foundation with the best developer experience and a focus on performance and our best practices.
 
+[<kbd> <br> Documentation <br> </kbd>](https://profiteam-react-boilerplate.gitbook.io/profiteam-react-boilerplate/)
+
 <div align="center">
   <sub>Created by <a href="https://t.me/kelian9">Profiteam</a>.</sub>
 </div>
