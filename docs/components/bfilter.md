@@ -1,7 +1,16 @@
 Just describe filter fields. Use subclasses of [FilterField](https://github.com/kelian9/profiteam-react-boilerplate/blob/main/src/components/ui/BFilter/FilterField.ts).
 
 ## Example
-```
+
+{% code title="index.tsx" overflow="wrap" lineNumbers="true" %}
+
+```typescript
+import React from 'react';
+import BFilter from '@ui/BFilter';
+import IFilterField from '@ui/BFilter/IFilterField';
+import { FilterComponentField, FilterDatePickerField, FilterInputField, FilterSelectField } from '@ui/BFilter/FilterField';
+
+const MyComponent: React.FC = () = {
 	const [filterParams, setFilterParams] = useState<Record<string, any> | null>({
 		search: '',
 		userId: null,
@@ -41,14 +50,22 @@ Just describe filter fields. Use subclasses of [FilterField](https://github.com/
 	];
 
 	return (
-		<BFilter
-			filterFields={filterFields}
-			redefineValuesDep={redefineValuesDep}
-			realTime={true}
-			onChange={(e: Record<string, any> | null) => filterParams = e}
-		/>
+		<>
+			<BFilter
+				filterFields={filterFields}
+				redefineValuesDep={redefineValuesDep}
+				realTime={true}
+				onChange={(e: Record<string, any> | null) => filterParams = e}
+			/>
+			// BTable with BPagination or sth eles
+		</>
 	);
+};
+
+export default MyComponent;
 ```
+
+{% endcode %}
 
 ### BFilter props
 

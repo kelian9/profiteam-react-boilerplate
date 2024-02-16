@@ -32,6 +32,9 @@
 			"@api/*": [
 				"./src/api/*"
 			],
+			"@ui/*": [
+				"./src/components/ui/*"
+			],
 			"@views/*": [
 				"./src/components/views/*"
 			],
