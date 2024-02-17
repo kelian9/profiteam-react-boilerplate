@@ -6,7 +6,7 @@ interface IBTableBaseProps<T> {
 	data: T[];
 	fields: ITableField[];
 	footFields?: ITableFooterField[];
-	actions?: IAction<T>[];
+	actions?: IAction[];
 	count?: number;
 	limit?: number;
 	curPage?: number;

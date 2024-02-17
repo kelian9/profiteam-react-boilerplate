@@ -1,10 +1,9 @@
 import { IFormField } from '@models/IFormField';
-import EntityChangeFormType from '@models/enums/EntityChangeFormTypeEnum';
 
 interface IEntityForm {
-	formType: EntityChangeFormType;
-	onSubmit: (...args: any) => void;
-	formsFields: IFormField[];
+	[key: string]: {
+		formFields: IFormField[];
+	};
 }
 
 export default IEntityForm;

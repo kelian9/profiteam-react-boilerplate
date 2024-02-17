@@ -1,5 +1,5 @@
 enum BTableActionType {
-	SAVE,
+	READ,
 	EDIT,
 	DELETE,
 	CUSTOM,

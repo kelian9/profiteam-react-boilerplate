@@ -1,6 +1,6 @@
-enum TableTypes {
+enum TableType {
 	GLOBAL = 'global',
 	LOCAL = 'local',
 }
 
-export default TableTypes;
+export default TableType;

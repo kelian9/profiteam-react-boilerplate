@@ -1,11 +1,7 @@
-import TableTypes from '@models/enums/TableTypeEnum';
-import { IAction } from 'src/components/ui/BTable/BTableBase/models/IAction';
+import TableType from '@models/enums/TableTypeEnum';
 import { ITableField } from 'src/components/ui/BTable/BTableBase/models/ITableField';
-import { ITableOptions } from 'src/components/ui/BTable/BTableBase/models/ITableOptions';
 
-export interface IEntityTable<T> {
-	type: TableTypes;
+export interface IEntityTable {
+	type: TableType;
 	tableFields: ITableField[];
-	actions?: IAction<T>[];
-	listOptions?: ITableOptions;
 }

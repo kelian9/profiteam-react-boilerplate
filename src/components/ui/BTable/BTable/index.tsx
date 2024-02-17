@@ -10,7 +10,7 @@ interface IBTableProps<T> {
 	fields: ITableField[];
 	getData: (...args: any[]) => Promise<AxiosResponse<T[] | IErrorResponse> | T[]>;
 	footFields?: ITableFooterField[];
-	actions?: IAction<T>[];
+	actions?: IAction[];
 	limit?: number;
 	rowClick?: (item?: number | string) => void;
 	listOptions?: ITableOptions;
