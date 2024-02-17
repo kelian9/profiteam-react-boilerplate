@@ -17,7 +17,7 @@ interface IBTableStoreProps<T> {
 	rowClick?: (item?: number | string) => void;
 	listOptions?: ITableOptions;
 	style?: React.CSSProperties;
-	styleNode?: React.CSSProperties;
+	nodeStyle?: React.CSSProperties;
 }
 
 const BTableStore = <T extends object>(props: IBTableStoreProps<T>) => {
@@ -34,7 +34,7 @@ const BTableStore = <T extends object>(props: IBTableStoreProps<T>) => {
 		rowClick,
 		listOptions,
 		style,
-		styleNode,
+		nodeStyle,
 	} = props;
 
 	return (
@@ -51,7 +51,7 @@ const BTableStore = <T extends object>(props: IBTableStoreProps<T>) => {
 			rowClick={rowClick}
 			listOptions={listOptions}
 			style={style}
-			styleNode={styleNode}
+			nodeStyle={nodeStyle}
 		/>
 	);
 };

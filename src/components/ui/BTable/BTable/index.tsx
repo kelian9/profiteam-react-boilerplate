@@ -15,11 +15,11 @@ interface IBTableProps<T> {
 	rowClick?: (item?: number | string) => void;
 	listOptions?: ITableOptions;
 	style?: React.CSSProperties;
-	styleNode?: React.CSSProperties;
+	nodeStyle?: React.CSSProperties;
 }
 
 const BTable = <T extends object>(props: IBTableProps<T>) => {
-	const { fields, footFields, actions, limit, getData, rowClick, listOptions, style, styleNode } = props;
+	const { fields, footFields, actions, limit, getData, rowClick, listOptions, style, nodeStyle } = props;
 
 	const [data, setData] = useState<T[]>([]);
 	const [sortData, setSortData] = useState<any>();
@@ -71,7 +71,7 @@ const BTable = <T extends object>(props: IBTableProps<T>) => {
 			rowClick={rowClick}
 			listOptions={complexListOptions}
 			style={style}
-			styleNode={styleNode}
+			nodeStyle={nodeStyle}
 		/>
 	);
 };

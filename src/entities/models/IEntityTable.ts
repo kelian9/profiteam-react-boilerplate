@@ -16,5 +16,5 @@ export interface IEntityTable<T> {
 	rowClick?: (item?: number | string) => void;
 	listOptions?: ITableOptions;
 	style?: React.CSSProperties;
-	styleNode?: React.CSSProperties;
+	nodeStyle?: React.CSSProperties;
 }

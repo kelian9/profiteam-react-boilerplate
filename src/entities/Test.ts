@@ -2,40 +2,59 @@ import testAPI from '@api/testAPI';
 import { IEntityField } from '@models/IEntityField';
 import IMethods from '@models/IMethods';
 import IQueryFilter from '@models/IQueryFilter';
-import FormType from '@models/enums/FormTypesEnum';
-import TableActionType from '@models/enums/TableActionTypesEnum';
+import BTableActionType from '@models/enums/BTableActionTypesEnum';
+import EntityChangeFormType from '@models/enums/EntityChangeFormTypeEnum';
+import FieldControlType from '@models/enums/FieldControlTypeEnum';
+import PaginationParams from '@models/enums/PaginationParamsEnum';
 import TableTypes from '@models/enums/TableTypeEnum';
+import IEntity from './models/IEntity';
 import IEntityFilter from './models/IEntityFilter';
 import IEntityForm from './models/IEntityForm';
 import { IEntityTable } from './models/IEntityTable';
 
 const methods: IMethods<any> = {
-	filter: (data: any) => testAPI.getData(data),
+	getData: (data: any) => testAPI.getData(data),
 };
 
 const queryFilter: IQueryFilter = {
-	name: 'test',
-	type: 'test',
-	defaultValue: 1,
-	required: true,
+	parameters: [
+		{
+			name: 'offset',
+			type: PaginationParams.OFFSET,
+			defaultValue: 0,
+			required: true,
+		},
+		{
+			name: 'limit',
+			type: PaginationParams.LIMIT,
+			defaultValue: 10,
+			required: true,
+		},
+		{
+			name: 'sortBy',
+			type: PaginationParams.SORT_BY,
+			defaultValue: 'date_created',
+		},
+		{
+			name: 'sorting',
+			type: PaginationParams.SORT_ORDER,
+			defaultValue: 'desc',
+		},
+	],
 };
 
 const fields: IEntityField[] = [
 	{
 		name: 'Осн текст',
-		entityName: 'test',
 	},
 	{
 		name: 'id',
-		entityName: 'test',
 	},
 	{
 		name: 'id пользователя',
-		entityName: 'test',
 	},
 	{
 		name: 'completed',
-		entityName: 'test',
 	},
 ];
 
@@ -46,15 +65,15 @@ const filters: IEntityFilter = {
 
 const actionsTest = [
 	{
-		type: TableActionType.SAVE,
+		type: BTableActionType.SAVE,
 		method: () => console.log('save'),
 	},
 	{
-		type: TableActionType.EDIT,
+		type: BTableActionType.EDIT,
 		method: () => console.log('edit'),
 	},
 	{
-		type: TableActionType.DELETE,
+		type: BTableActionType.DELETE,
 		method: () => console.log('delete'),
 	},
 ];
@@ -95,24 +114,46 @@ const table: IEntityTable<any> = {
 	listOptions: listOptionsTest,
 };
 
-const forms: IEntityForm = {
-	formsFields: [
-		{
-			type: FormType.ADD,
-			name: 'Добавить',
-		},
-		{
-			type: FormType.EDIT,
-			name: 'Редактировать',
-		},
-		{
-			type: FormType.DELETE,
-			name: 'Удалить',
-		},
-	],
-};
+const forms: IEntityForm[] = [
+	{
+		formType: EntityChangeFormType.CREATE,
+		onSubmit: (e: any) => console.log(e),
+		formsFields: [
+			{
+				name: 'Добавить',
+				controlType: FieldControlType.STRING,
+			},
+			{
+				name: 'Тип',
+				controlType: FieldControlType.SELECTION,
+			},
+			{
+				name: 'Число',
+				controlType: FieldControlType.NUMBER,
+			},
+			{
+				name: 'Удалить',
+				controlType: FieldControlType.STRING,
+			},
+		],
+	},
+	{
+		formType: EntityChangeFormType.UPDATE,
+		onSubmit: (e: any) => console.log(e),
+		formsFields: [
+			{
+				name: 'Редактировать',
+				controlType: FieldControlType.STRING,
+			},
+			{
+				name: 'Удалить',
+				controlType: FieldControlType.STRING,
+			},
+		],
+	},
+];
 
-export default {
+const Test: IEntity<any> = {
 	name: 'Test',
 	methods,
 	queryFilter,
@@ -121,3 +162,5 @@ export default {
 	table,
 	forms,
 };
+
+export default Test;

@@ -15,7 +15,7 @@ interface IBTableBaseProps<T> {
 	rowClick?: (itemId?: number | string) => void;
 	listOptions?: ITableOptions;
 	style?: React.CSSProperties;
-	styleNode?: React.CSSProperties;
+	nodeStyle?: React.CSSProperties;
 }
 
 export default IBTableBaseProps;

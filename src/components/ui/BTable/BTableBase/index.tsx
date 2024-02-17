@@ -19,7 +19,7 @@ const BTableBase = <T extends object>(props: IBTableBaseProps<T>) => {
 		rowClick,
 		listOptions,
 		style,
-		styleNode,
+		nodeStyle,
 	} = props;
 
 	const [sortBy, setSortBy] = useState<string>('');
@@ -85,7 +85,7 @@ const BTableBase = <T extends object>(props: IBTableBaseProps<T>) => {
 							fields={fields}
 							actions={actions}
 							rowClick={rowClick}
-							styleNode={styleNode}
+							nodeStyle={nodeStyle}
 						/>
 					))}
 				</tbody>

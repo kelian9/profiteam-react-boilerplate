@@ -1,5 +1,5 @@
+import BTableActionType from '@models/enums/BTableActionTypesEnum';
 import FieldType from '@models/enums/FieldTypeEnum';
-import TableActionType from '@models/enums/TableActionTypesEnum';
 import React from 'react';
 import deleteIcon from '../../../../../assets/images/icons/delete-icon.svg';
 import editIcon from '../../../../../assets/images/icons/edit-icon.svg';
@@ -14,7 +14,7 @@ type INodeBase = {
 };
 
 const BTableNode = <T extends INodeBase>(props: IBTableNodeProps<T>) => {
-	const { node, fields, actions, rowClick, styleNode } = props;
+	const { node, fields, actions, rowClick, nodeStyle } = props;
 
 	const rowClickHandler = (e: React.MouseEvent<HTMLTableRowElement, MouseEvent>) => {
 		e.stopPropagation();
@@ -51,7 +51,7 @@ const BTableNode = <T extends INodeBase>(props: IBTableNodeProps<T>) => {
 	const renderAction = (action: IAction<T>) => {
 		if (!action?.template) {
 			switch (action.type) {
-				case TableActionType.SAVE:
+				case BTableActionType.SAVE:
 					return (
 						<img
 							key={action.type}
@@ -61,7 +61,7 @@ const BTableNode = <T extends INodeBase>(props: IBTableNodeProps<T>) => {
 							onClick={(e) => actionClickHandler(e, action.method)}
 						/>
 					);
-				case TableActionType.EDIT:
+				case BTableActionType.EDIT:
 					return (
 						<img
 							key={action.type}
@@ -71,7 +71,7 @@ const BTableNode = <T extends INodeBase>(props: IBTableNodeProps<T>) => {
 							onClick={(e) => actionClickHandler(e, action.method)}
 						/>
 					);
-				case TableActionType.DELETE:
+				case BTableActionType.DELETE:
 					return (
 						<img
 							key={action.type}
@@ -89,7 +89,7 @@ const BTableNode = <T extends INodeBase>(props: IBTableNodeProps<T>) => {
 	};
 
 	return (
-		<tr style={styleNode} onClick={(e) => rowClickHandler(e)}>
+		<tr style={nodeStyle} onClick={(e) => rowClickHandler(e)}>
 			{fields?.map((field, index) => <td key={index}>{renderField(field)}</td>)}
 			{actions && (
 				<td>

@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios';
 import IErrorResponse from './responses/IErrorResponse';
 
 interface IMethods<T> {
-	filter: ((...args: any[]) => Promise<AxiosResponse<T[] | IErrorResponse>>) | ((...args: any[]) => void);
+	getData: ((...args: any[]) => Promise<AxiosResponse<T[] | IErrorResponse>>) | ((...args: any[]) => void);
 	getById?: (id: number) => Promise<AxiosResponse<T | IErrorResponse>>;
 	create?: (body: any) => Promise<AxiosResponse<boolean | IErrorResponse>>;
 	update?: (id: number, body: any) => Promise<AxiosResponse<boolean | IErrorResponse>>;

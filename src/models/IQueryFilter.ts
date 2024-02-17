@@ -1,8 +1,12 @@
+import PaginationParams from './enums/PaginationParamsEnum';
+
 interface IQueryFilter {
-	name: string;
-	type: string;
-	defaultValue?: string | number;
-	required?: boolean;
+	parameters: {
+		name: string;
+		type: PaginationParams;
+		defaultValue?: string | number;
+		required?: boolean;
+	}[];
 }
 
 export default IQueryFilter;

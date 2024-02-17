@@ -1,7 +1,7 @@
-import FilterFieldType from '@models/enums/FilterFieldType';
+import FieldType from '@models/enums/FieldType';
 
 export interface IGeneralFilterField {
-	fieldType: FilterFieldType;
+	fieldType: FieldType;
 	id?: string;
 	name: string;
 	keyName: string;

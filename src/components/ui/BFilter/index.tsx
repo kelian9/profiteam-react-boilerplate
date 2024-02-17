@@ -1,4 +1,4 @@
-import FilterFieldType from '@models/enums/FilterFieldType';
+import FieldType from '@models/enums/FieldTypeEnum';
 import React, { useMemo } from 'react';
 import IFilterField, {
 	IFilterCheckbox,
@@ -22,27 +22,27 @@ const BFilter: React.FC<IBFilterProps> = (props: IBFilterProps) => {
 			<>
 				{filterFields.map((filterField) => {
 					switch (filterField.fieldType) {
-						case FilterFieldType.INPUT: {
+						case FieldType.INPUT: {
 							const field = filterField as IFilterInput;
 							return <input type={field.type} />;
 						}
-						case FilterFieldType.DATEPICKER: {
+						case FieldType.DATEPICKER: {
 							const field = filterField as IFilterDatePicker;
 							return <input type='date' value={String(field.value)} />;
 						}
-						case FilterFieldType.CHECKBOX: {
+						case FieldType.CHECKBOX: {
 							const field = filterField as IFilterCheckbox;
 							return <input type='checkbox' checked={field.value} />;
 						}
-						case FilterFieldType.RADIO: {
+						case FieldType.RADIO: {
 							const field = filterField as IFilterRadio;
 							return <input type='radio' value={field.value} />;
 						}
-						case FilterFieldType.SELECT: {
+						case FieldType.SELECT: {
 							const field = filterField as IFilterSelect<unknown, any>;
 							return <select name='' id='' value={field.value}></select>;
 						}
-						case FilterFieldType.COMPONENT: {
+						case FieldType.COMPONENT: {
 							const field = filterField as IFilterFieldComponent;
 							return field.component;
 						}

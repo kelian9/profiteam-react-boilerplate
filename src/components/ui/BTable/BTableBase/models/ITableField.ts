@@ -5,7 +5,7 @@ export interface ITableField {
 	label: string;
 	sortable?: boolean;
 	type?: FieldType;
-	props?: any[];
+	props?: any;
 	template?: JSX.Element;
 }
 
