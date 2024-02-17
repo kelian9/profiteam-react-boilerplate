@@ -110,7 +110,6 @@ const table: IEntityTable<any> = {
 	type: TableTypes.LOCAL,
 	tableFields: tableFields,
 	actions: actionsTest,
-	limit: 10,
 	listOptions: listOptionsTest,
 };
 
