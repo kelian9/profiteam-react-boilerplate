@@ -9,7 +9,7 @@ interface IBTableStoreProps<T> {
 	fields: ITableField[];
 	getData: (...args: any[]) => void;
 	footFields?: ITableFooterField[];
-	actions?: IAction<T>[];
+	actions?: IAction[];
 	count?: number;
 	limit?: number;
 	curPage?: number;

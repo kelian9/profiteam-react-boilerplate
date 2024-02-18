@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useState } from 'react';
 import FieldType from '@models/enums/FieldTypeEnum';
+import React, { useEffect, useMemo, useState } from 'react';
 import BSelect from '../BSelect';
 
 import IFilterField, {

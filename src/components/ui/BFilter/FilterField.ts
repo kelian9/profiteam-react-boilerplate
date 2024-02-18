@@ -35,7 +35,7 @@ class FilterField<V> implements IGeneralFilterField<V> {
 
 export class FilterInputField extends FilterField<string | null> implements IFilterInput {
 	constructor(field: IFilterInput) {
-		field.fieldType = FilterFieldType.INPUT;
+		field.fieldType = FieldType.INPUT;
 		super(field);
 		this.type = field.type ? field.type : 'text';
 		this.onChange = field.onChange;
@@ -46,7 +46,7 @@ export class FilterInputField extends FilterField<string | null> implements IFil
 
 export class FilterDatePickerField extends FilterField<string | Date | null> implements IFilterDatePicker {
 	constructor(field: IFilterDatePicker) {
-		field.fieldType = FilterFieldType.DATEPICKER;
+		field.fieldType = FieldType.DATEPICKER;
 		super(field);
 		this.value = String(field.value);
 		this.onChange = field.onChange;
@@ -58,7 +58,7 @@ export class FilterDatePickerField extends FilterField<string | Date | null> imp
 
 export class FilterCheckboxField extends FilterField<boolean | null> implements IFilterCheckbox {
 	constructor(field: IFilterCheckbox) {
-		field.fieldType = FilterFieldType.CHECKBOX;
+		field.fieldType = FieldType.CHECKBOX;
 		super(field);
 		this.value = field.value;
 		this.color = field.color;
@@ -71,7 +71,7 @@ export class FilterCheckboxField extends FilterField<boolean | null> implements 
 
 export class FilterRadioField extends FilterField<string | null> implements IFilterRadio {
 	constructor(field: IFilterRadio) {
-		field.fieldType = FilterFieldType.RADIO;
+		field.fieldType = FieldType.RADIO;
 		super(field);
 		this.value = field.value;
 		this.text = field.text;
@@ -84,7 +84,7 @@ export class FilterRadioField extends FilterField<string | null> implements IFil
 
 export class FilterSelectField<T, V> extends FilterField<V | null> implements IFilterSelect<T, V> {
 	constructor(field: IFilterSelect<T, V>) {
-		field.fieldType = FilterFieldType.SELECT;
+		field.fieldType = FieldType.SELECT;
 		super(field);
 		this.value = field.value;
 		this.multiple = Boolean(field.multiple);
@@ -115,7 +115,7 @@ export class FilterSelectField<T, V> extends FilterField<V | null> implements IF
 
 export class FilterComponentField implements IFilterFieldComponent {
 	constructor(field: IFilterFieldComponent) {
-		this.fieldType = FilterFieldType.COMPONENT;
+		this.fieldType = FieldType.COMPONENT;
 		this.id = field.id;
 		this.name = field.name;
 		this.keyName = field.keyName;
@@ -127,7 +127,7 @@ export class FilterComponentField implements IFilterFieldComponent {
 		this.onChange = field.onChange;
 	}
 
-	public fieldType?: FilterFieldType;
+	public fieldType?: FieldType;
 	public id?: string;
 	public name?: string;
 	public keyName: string;
