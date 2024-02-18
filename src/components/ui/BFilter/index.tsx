@@ -1,6 +1,7 @@
-import FilterFieldType from '@models/enums/FilterFieldType';
 import React, { useEffect, useMemo, useState } from 'react';
+import FieldType from '@models/enums/FieldTypeEnum';
 import BSelect from '../BSelect';
+
 import IFilterField, {
 	IFilterCheckbox,
 	IFilterDatePicker,
@@ -49,7 +50,7 @@ const BFilter: React.FC<IBFilterProps> = (props: IBFilterProps) => {
 			<>
 				{filterFields.map((filterField) => {
 					switch (filterField.fieldType) {
-						case FilterFieldType.INPUT: {
+						case FieldType.INPUT: {
 							const field = filterField as IFilterInput;
 							return (
 								<input
@@ -67,7 +68,7 @@ const BFilter: React.FC<IBFilterProps> = (props: IBFilterProps) => {
 								/>
 							);
 						}
-						case FilterFieldType.DATEPICKER: {
+						case FieldType.DATEPICKER: {
 							const field = filterField as IFilterDatePicker;
 							return (
 								<input
@@ -85,7 +86,7 @@ const BFilter: React.FC<IBFilterProps> = (props: IBFilterProps) => {
 								/>
 							);
 						}
-						case FilterFieldType.CHECKBOX: {
+						case FieldType.CHECKBOX: {
 							const field = filterField as IFilterCheckbox;
 							return (
 								<input
@@ -104,7 +105,7 @@ const BFilter: React.FC<IBFilterProps> = (props: IBFilterProps) => {
 								/>
 							);
 						}
-						case FilterFieldType.RADIO: {
+						case FieldType.RADIO: {
 							const field = filterField as IFilterRadio;
 							return (
 								<input
@@ -123,7 +124,7 @@ const BFilter: React.FC<IBFilterProps> = (props: IBFilterProps) => {
 								/>
 							);
 						}
-						case FilterFieldType.SELECT: {
+						case FieldType.SELECT: {
 							const field = filterField as IFilterSelect<unknown, any>;
 							return (
 								<BSelect
@@ -152,7 +153,7 @@ const BFilter: React.FC<IBFilterProps> = (props: IBFilterProps) => {
 								/>
 							);
 						}
-						case FilterFieldType.COMPONENT: {
+						case FieldType.COMPONENT: {
 							const field = filterField as IFilterFieldComponent;
 							return field.component({
 								...field,

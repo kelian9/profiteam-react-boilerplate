@@ -10,16 +10,16 @@ interface IBTableProps<T> {
 	fields: ITableField[];
 	getData: (...args: any[]) => Promise<AxiosResponse<T[] | IErrorResponse> | T[]>;
 	footFields?: ITableFooterField[];
-	actions?: IAction<T>[];
-	perPage?: number;
-	rowClick?: (item?: number | string) => void;
+	actions?: IAction[];
+	limit?: number;
+	rowClick?: ((item?: number | string) => void) | null;
 	listOptions?: ITableOptions;
 	style?: React.CSSProperties;
-	styleNode?: React.CSSProperties;
+	nodeStyle?: React.CSSProperties;
 }
 
 const BTable = <T extends object>(props: IBTableProps<T>) => {
-	const { fields, footFields, actions, perPage, getData, rowClick, listOptions, style, styleNode } = props;
+	const { fields, footFields, actions, limit, getData, rowClick, listOptions, style, nodeStyle } = props;
 
 	const [data, setData] = useState<T[]>([]);
 	const [sortData, setSortData] = useState<any>();
@@ -30,12 +30,12 @@ const BTable = <T extends object>(props: IBTableProps<T>) => {
 		const data = {
 			...sortData,
 			_page: curPage,
-			_limit: perPage,
+			_limit: limit,
 		};
 		getData(data)
 			.then((response: any) => {
-				setData(response.data.results as T[]);
-				setCount(response.data.count as number);
+				setData(response.data as T[]);
+				setCount(10);
 			})
 			.catch((error: any) => {
 				console.log(error);
@@ -64,14 +64,14 @@ const BTable = <T extends object>(props: IBTableProps<T>) => {
 			footFields={footFields}
 			actions={actions}
 			count={count}
-			perPage={perPage}
+			limit={limit}
 			curPage={curPage}
 			getData={fetchData}
 			resetPagination={() => setCurPage(1)}
 			rowClick={rowClick}
 			listOptions={complexListOptions}
 			style={style}
-			styleNode={styleNode}
+			nodeStyle={nodeStyle}
 		/>
 	);
 };

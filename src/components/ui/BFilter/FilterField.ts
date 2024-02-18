@@ -1,4 +1,4 @@
-import FilterFieldType from '@models/enums/FilterFieldType';
+import FieldType from '@models/enums/FieldTypeEnum';
 import {
 	IFilterCheckbox,
 	IFilterDatePicker,
@@ -22,7 +22,7 @@ class FilterField<V> implements IGeneralFilterField<V> {
 		this.onChange = field.onChange;
 	}
 
-	public fieldType?: FilterFieldType;
+	public fieldType: FieldType;
 	public id?: string;
 	public name?: string;
 	public keyName: string;

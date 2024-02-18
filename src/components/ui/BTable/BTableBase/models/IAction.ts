@@ -1,5 +1,7 @@
-export interface IAction<T> {
-	method: (element?: T) => void;
-	type: string;
+import BTableActionType from '@models/enums/BTableActionTypesEnum';
+
+export interface IAction {
+	method: ((...args: any) => void) | boolean;
+	type: BTableActionType;
 	template?: JSX.Element;
 }

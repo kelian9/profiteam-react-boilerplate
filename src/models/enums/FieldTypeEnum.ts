@@ -1,4 +1,4 @@
-enum FilterFieldType {
+enum FieldType {
 	DATEPICKER,
 	SELECT,
 	CHECKBOX,
@@ -7,4 +7,4 @@ enum FilterFieldType {
 	COMPONENT,
 }
 
-export default FilterFieldType;
+export default FieldType;
