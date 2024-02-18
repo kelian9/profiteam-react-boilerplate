@@ -74,7 +74,7 @@ to see the example app at `http://localhost:8080`.
 ```Shell
 npm run clean
 ```
-to prepare for your own project.
+to prepare the repository for your own project.
 
 Your boilerplate project is now ready for use! You can start building your application by modifying the files in the src directory. The boilerplate comes with basic routing and a simple Home component to get you started. To learn more about how to use React Boilerplate, check out the [documentation]((https://profiteam-react-boilerplate.gitbook.io/profiteam-react-boilerplate/))
 
