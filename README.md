@@ -1,4 +1,4 @@
-<h1 align="center">Profiteam-react-boilerplate</h1>
+<h1 align="center">Profiteam React Boilerplate</h1>
 
 <div align="center">
 	<img src="https://github.com/kelian9/profiteam-react-boilerplate-brand/blob/main/assets/boilerplate.png" alt="profiteam react boilerplate banner" align="center" style="width: 140px; height: 148px;" />
