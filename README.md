@@ -4,7 +4,7 @@
 	<img src="https://github.com/kelian9/profiteam-react-boilerplate-brand/blob/main/assets/boilerplate.png" alt="profiteam react boilerplate banner" align="center" style="width: 140px; height: 148px;" />
 </div>
 
-<p align="center">🔥 <em>A powerful and production-ready foundation that helps you develop and maintain robust and efficient React applications. It provides a well-organized and modular structure, essential features, and best practices to accelerate your development process.</em></p>
+<p align="center">🚀 <em>A powerful and production-ready foundation that helps you develop and maintain robust and efficient React applications. It provides a well-organized and modular structure, essential features, and best practices to accelerate your development process.</em></p>
 
 <p align="center">
 	<a href="https://profiteam-react-boilerplate.gitbook.io/profiteam-react-boilerplate/" target="_blank"><strong>Documentation</strong></a>
