@@ -19,7 +19,7 @@ const BTableBase = <T extends object>(props: IBTableBaseProps<T>) => {
 		rowClick,
 		listOptions,
 		style,
-		styleNode,
+		nodeStyle,
 	} = props;
 
 	const [sortBy, setSortBy] = useState<string>('');
@@ -32,7 +32,7 @@ const BTableBase = <T extends object>(props: IBTableBaseProps<T>) => {
 
 	const sorting = (key: string) => {
 		if (!listOptions?.sort?.enabled) return;
-		if (fields.filter((item) => item.sortable === true).findIndex((item) => item.key === key) === -1) return;
+		if (fields.filter((item) => item.sortable === true).findIndex((item) => item.keyName === key) === -1) return;
 		if (sortBy === key) {
 			setSortDesc(!sortDesc);
 			return;
@@ -61,14 +61,14 @@ const BTableBase = <T extends object>(props: IBTableBaseProps<T>) => {
 				<thead>
 					<tr>
 						{fields?.map((field, index) => (
-							<th key={index} onClick={() => sorting(field.key)}>
+							<th key={index} onClick={() => sorting(field.keyName)}>
 								<div className={styles.fieldHead}>
 									<span>{field.label}</span>
-									{field.key === sortBy && (
+									{field.keyName === sortBy && (
 										<img
 											src={sortDesc ? chevronUpIcon : chevronDownIcon}
 											alt=''
-											onClick={() => sorting(field.key)}
+											onClick={() => sorting(field.keyName)}
 										/>
 									)}
 								</div>
@@ -85,7 +85,7 @@ const BTableBase = <T extends object>(props: IBTableBaseProps<T>) => {
 							fields={fields}
 							actions={actions}
 							rowClick={rowClick}
-							styleNode={styleNode}
+							nodeStyle={nodeStyle}
 						/>
 					))}
 				</tbody>

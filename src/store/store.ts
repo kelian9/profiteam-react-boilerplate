@@ -1,9 +1,8 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistStore } from 'redux-persist'; // persistReducer
 // import storage from 'redux-persist/lib/storage';
-import history from '@utils/history';
-// import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { createRouterMiddleware, createRouterReducer } from '@lagunovsky/redux-react-router';
+import history from '@utils/history';
 import rejectedErrorsQueueReducer from './slices/rejectedErrorsQueue';
 
 const reducer = combineReducers({

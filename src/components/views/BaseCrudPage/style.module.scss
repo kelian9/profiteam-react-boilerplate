@@ -1,0 +1,16 @@
+.button-container {
+	display: flex;
+	justify-content: end;
+	align-items: center;
+}
+
+.default-button {
+	margin-left: 15px;
+	box-sizing: border-box;
+	font-size: 16px;
+	text-align: center;
+	cursor: pointer;
+
+	:hover {
+	}
+}

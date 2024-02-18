@@ -1,9 +1,11 @@
+import FieldType from '@models/enums/FieldTypeEnum';
+
 export interface ITableField {
-	key: string;
+	keyName: string;
 	label: string;
 	sortable?: boolean;
-	type?: string;
-	props?: any[];
+	fieldType?: FieldType;
+	props?: any;
 	template?: JSX.Element;
 }
 

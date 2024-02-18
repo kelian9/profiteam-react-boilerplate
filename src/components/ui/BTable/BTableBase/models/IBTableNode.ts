@@ -6,7 +6,7 @@ interface IBTableNodeProps<T> {
 	fields: ITableField[];
 	actions?: IAction<T>[];
 	rowClick?: (itemId?: number | string) => void;
-	styleNode?: React.CSSProperties;
+	nodeStyle?: React.CSSProperties;
 }
 
 export default IBTableNodeProps;
