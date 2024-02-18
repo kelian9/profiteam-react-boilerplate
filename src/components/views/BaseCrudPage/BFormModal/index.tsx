@@ -20,7 +20,7 @@ const BFormModal = (props: IBFormModal) => {
 
 	const [formVal, setFormVal] = useState<any>({});
 
-	const hadnleSubmit = (e: any) => {
+	const handleSubmit = (e: any) => {
 		e.preventDefault();
 		onSubmit(formVal);
 		closeModal();
@@ -71,16 +71,53 @@ const BFormModal = (props: IBFormModal) => {
 						</label>
 					</div>
 				);
+			case FieldControlType.CHECKBOX:
+				return (
+					<div key={field.name + field.controlType}>
+						<label>
+							{field.name}:
+							<input
+								type='checkbox'
+								value={formVal && formVal[field.name] ? formVal[field.name] : 0}
+								onChange={(e) => setFormVal({ ...formVal, [field.name]: e.target.value })}
+							/>
+						</label>
+					</div>
+				);
+			case FieldControlType.RADIO:
+				return (
+					<div key={field.name + field.controlType}>
+						<label>
+							{field.name}:
+							<input
+								type='radio'
+								value={formVal && formVal[field.name] ? formVal[field.name] : 0}
+								onChange={(e) => setFormVal({ ...formVal, [field.name]: e.target.value })}
+							/>
+						</label>
+					</div>
+				);
 			default:
 				break;
 		}
 	};
 
 	useEffect(() => {
+		if (formType !== EntityChangeFormType.UPDATE) return;
 		if (!getById) return;
 		getById()
 			.then((response: any) => {
-				setFormVal(response.data);
+				let newFormVal = {};
+				formFields.map((item) => {
+					// .toString() as keyof typeof newFormVal
+					if (response.data.hasOwnProperty(item.keyName)) {
+						newFormVal = {
+							...newFormVal,
+							keyName: response.data[item.keyName],
+						};
+					}
+				});
+				setFormVal(newFormVal);
 			})
 			.catch((error: any) => {
 				console.log(error);
@@ -95,7 +132,7 @@ const BFormModal = (props: IBFormModal) => {
 
 	return (
 		<BModal show={show} closeModal={closeModal} style={style}>
-			<form onSubmit={hadnleSubmit}>
+			<form onSubmit={handleSubmit}>
 				{formFields.map((item) => renderField(item))}
 				<input className={styles['modal-button-submit']} type='submit' value={submitBtnMemo} />
 			</form>

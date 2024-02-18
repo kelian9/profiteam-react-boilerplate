@@ -1,5 +1,6 @@
 enum FieldControlType {
 	STRING = 'string',
+	RADIO = 'radio',
 	BIGINT = 'bigint',
 	NUMBER = 'number',
 	GUID = 'guid',

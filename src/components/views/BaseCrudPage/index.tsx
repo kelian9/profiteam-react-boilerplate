@@ -38,7 +38,7 @@ const BaseCrudPage = <T extends object>(props: BaseCrudPageProps<T>) => {
 		if (typeof toggleModal === 'function') toggleModal();
 	};
 
-	const [actions] = useState(() => {
+	const [actions] = useMemo(() => {
 		const actions = [];
 		if (methods.update) {
 			actions.push({
@@ -53,9 +53,9 @@ const BaseCrudPage = <T extends object>(props: BaseCrudPageProps<T>) => {
 			});
 		}
 		return actions;
-	});
+	}, [methods]);
 
-	const [listOptions] = useState(() => {
+	const [listOptions] = useMemo(() => {
 		if (!queryFilter || !queryFilter.parameters.length) return;
 		const listOptions = {
 			pagination: {
@@ -72,7 +72,7 @@ const BaseCrudPage = <T extends object>(props: BaseCrudPageProps<T>) => {
 			listOptions.sort.enabled = true;
 		}
 		return listOptions;
-	});
+	}, [queryFilter?.parameters]);
 
 	const submit = (id: number, body?: any) => {
 		if (formType === EntityChangeFormType.CREATE) {
@@ -116,11 +116,11 @@ const BaseCrudPage = <T extends object>(props: BaseCrudPageProps<T>) => {
 				getData={methods.getData as (...args: any[]) => Promise<T[] | AxiosResponse<T[] | IErrorResponse, any>>}
 				actions={actions}
 				listOptions={listOptions}
-				// footFields={table.footFields}
-				// limit={table.limit}
-				// rowClick={table.rowClick}
-				// style={table.style}
-				// nodeStyle={table.nodeStyle}
+				footFields={table.footFields ? table.footFields : []}
+				limit={table.limit ? table.limit : 20}
+				rowClick={table.rowClick ? table.rowClick : null}
+				style={table.style ? table.style : {}}
+				nodeStyle={table.nodeStyle ? table.nodeStyle : {}}
 			/>
 		);
 	}, [table]);
