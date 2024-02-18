@@ -7,9 +7,32 @@ Using Profiteam React Boilerplate, you get to start your app with our community'
 ideas on what represents optimal developer experience, best practice, most
 efficient tooling and cleanest project structure.
 
+# Tech Stack
+See a complete list of the dependencies in `package.json`.
+
+## Core
+
+- [ ] [React](https://facebook.github.io/react/)
+- [ ] [React Router](https://github.com/remix-run/react-router)
+- [ ] [Redux](http://redux.js.org/)
+- [ ] [Redux Toolkit](https://redux-toolkit.js.org/)
+- [ ] [TypeScript](https://www.typescriptlang.org/)
+- [ ] [Webpack](https://webpack.js.org/)
+- [ ] [Sass/Scss](https://sass-lang.com/)
+
+## Testing
+
+- [ ] [Cypress](http://facebook.github.io/jest/)
+
+## Linting
+
+- [ ] [ESLint](http://eslint.org/)
+- [ ] [Prettier](https://prettier.io/)
+- [ ] [stylelint](https://stylelint.io/)
+
 # Feature overview
 
-## Quick scaffolding
+## Generators
 
 Run `npm run generate` in your terminal and choose one of the parts you want
 to generate. They'll automatically be imported wherever you want and have
@@ -24,6 +47,14 @@ everything set up correctly.
 
 A set of very useful components that implement frequently encountered logic, such as the thing we call **CRUD Page**.
 If you need to do a lot of pages with filter and sorting logic, data list as a table with pagination, forms for creation and editing and quit a bit more, please look at the **BaseCrudPage** in components section.
+
+## Robust and Modular Structure
+
+The boilerplate offers a robust and modular structure that makes it easy to organize and maintain your codebase.
+
+## Pre-Configured Webpack
+
+Profiteam React Boilerplate includes a pre-configured Webpack setup that optimizes your build process and simplifies the management of assets.
 
 ## Predictable state management
 
@@ -44,10 +75,8 @@ and more, today.
 
 Focus on writing new features without worrying about formatting or code quality. With the right editor setup, your code will automatically be formatted and linted as you work.
 
-Read more about linting in our [introduction](./introduction.md) and don't forget to setup your by following [our instructions](./editor.md).
-
 # Test coverage
 
-We strive for 100% test coverage and use [Cypress].
+The project includes e2e testing and code coverage tools to ensure high-quality and bug-free code. We strive for 100% test coverage and use [Cypress].
 
 [Cypress]: https://github.com/cypress-io/cypress

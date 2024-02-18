@@ -2,11 +2,11 @@
 
 <!-- * [README](../README.md) -->
 * [Quick Start](general/quick-start.md)
-* [Understanding react-boilerplate](general/README.md)
+* [Understanding boilerplate](general/README.md)
 
 ## Tools
 
-* [CLI & Scaffolding](general/commands.md)
+* [CLI](general/commands.md)
 * [Editor Configuration](tools/editor-configuration.md)
 <!-- * [Package Managers](tools/package-managers.md) -->
 
