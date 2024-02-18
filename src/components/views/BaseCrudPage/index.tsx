@@ -38,26 +38,29 @@ const BaseCrudPage = <T extends object>(props: BaseCrudPageProps<T>) => {
 		if (typeof toggleModal === 'function') toggleModal();
 	};
 
-	const [actions] = useMemo(() => {
-		const actions = [];
+	const actions = useMemo(() => {
+		const result = [];
 		if (methods.update) {
-			actions.push({
+			result.push({
 				type: BTableActionType.EDIT,
 				method: (e: any) => handleModal(e, EntityChangeFormType.UPDATE),
 			});
 		}
 		if (methods.delete) {
-			actions.push({
+			result.push({
 				type: BTableActionType.DELETE,
 				method: (e: any) => handleModal(e, EntityChangeFormType.DELETE),
 			});
 		}
-		return actions;
+		if (table?.actions) {
+			table.actions.map((item) => result.push(item));
+		}
+		return result;
 	}, [methods]);
 
-	const [listOptions] = useMemo(() => {
+	const listOptions = useMemo(() => {
 		if (!queryFilter || !queryFilter.parameters.length) return;
-		const listOptions = {
+		const result = {
 			pagination: {
 				enabled: false,
 			},
@@ -66,12 +69,12 @@ const BaseCrudPage = <T extends object>(props: BaseCrudPageProps<T>) => {
 			},
 		};
 		if (queryFilter.parameters.findIndex((item) => item.type === PaginationParams.OFFSET) !== -1) {
-			listOptions.pagination.enabled = true;
+			result.pagination.enabled = true;
 		}
 		if (queryFilter.parameters.findIndex((item) => item.type === PaginationParams.SORT_BY) !== -1) {
-			listOptions.sort.enabled = true;
+			result.sort.enabled = true;
 		}
-		return listOptions;
+		return result;
 	}, [queryFilter?.parameters]);
 
 	const submit = (id: number, body?: any) => {

@@ -113,7 +113,7 @@ const BFormModal = (props: IBFormModal) => {
 					if (response.data.hasOwnProperty(item.keyName)) {
 						newFormVal = {
 							...newFormVal,
-							keyName: response.data[item.keyName],
+							[item.keyName]: response.data[item.keyName],
 						};
 					}
 				});
@@ -124,7 +124,7 @@ const BFormModal = (props: IBFormModal) => {
 			});
 	}, []);
 
-	const submitBtnMemo = useMemo(() => {
+	const submitBtnText = useMemo(() => {
 		if (formType === EntityChangeFormType.UPDATE) return 'Редактировать';
 		if (formType === EntityChangeFormType.DELETE) return 'Удалить';
 		return 'Отправить';
@@ -134,7 +134,7 @@ const BFormModal = (props: IBFormModal) => {
 		<BModal show={show} closeModal={closeModal} style={style}>
 			<form onSubmit={handleSubmit}>
 				{formFields.map((item) => renderField(item))}
-				<input className={styles['modal-button-submit']} type='submit' value={submitBtnMemo} />
+				<input className={styles['modal-button-submit']} type='submit' value={submitBtnText} />
 			</form>
 		</BModal>
 	);
