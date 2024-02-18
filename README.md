@@ -69,7 +69,8 @@ At this point you can run
 npm start
 ```
 to see the example app at `http://localhost:8080`.
-5.	Run
+
+5.  Run
 ```Shell
 npm run clean
 ```
