@@ -93,7 +93,7 @@ const BTableBase = <T extends object>(props: IBTableBaseProps<T>) => {
 					<tr>{footFields?.map((item, index) => <td key={index}>{item?.label}</td>)}</tr>
 				</tfoot>
 			</table>
-			{listOptions?.pagination?.enabled && (
+			{listOptions?.pagination?.enabled && curPage && (
 				<BPagination
 					bigStep
 					disabled={false}

@@ -26,6 +26,7 @@
 	"plugins": [
 		"@typescript-eslint",
 		"cypress",
+		"eslint-plugin-cypress",
 		"prettier",
 		"no-only-tests",
 		"no-skip-tests"

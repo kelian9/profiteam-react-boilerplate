@@ -1,8 +1,10 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useId, useMemo, useRef, useState } from 'react';
+
+type TBase = { [key: string]: any };
 
 interface IBSelectProps<T, V = number> {
 	label: React.ReactNode;
-	multiple: boolean;
+	multiple?: boolean;
 	value?: V | V[];
 	disabled?: boolean;
 	reduceListItem: (elem: T) => React.ReactNode;
@@ -15,9 +17,10 @@ interface IBSelectProps<T, V = number> {
 	createMethod?: Function;
 	onChange: (value: V | V[] | null) => void;
 	style?: React.CSSProperties;
+	dataTestId?: string;
 }
 
-const BSelect = <T extends object, V = number>(props: IBSelectProps<T, V>) => {
+const BSelect = <T extends TBase, V = number>(props: IBSelectProps<T, V>) => {
 	/* eslint-disable */
 	const {
 		label,
@@ -31,11 +34,16 @@ const BSelect = <T extends object, V = number>(props: IBSelectProps<T, V>) => {
 		extraParams,
 		createMethod,
 		onChange,
-		searchQueryParam
+		searchQueryParam,
+		dataTestId,
 	} = props;
 
 	const [searchSubstr, setSearchSubstr] = useState<string>('');
 	const [data, setData] = useState<T[]>([]);
+
+	const inputId = useId();
+	const inputRef = useRef<HTMLInputElement | null>(null);
+	const [isFocused, setIsFocused] = useState<boolean>(false);
 
 	const disableCreation: boolean = useMemo(() => {
 		return (
@@ -82,6 +90,13 @@ const BSelect = <T extends object, V = number>(props: IBSelectProps<T, V>) => {
 		}
 	};
 
+	// const listIsVisible = useMemo(() => {
+	// 	console.log(document.activeElement, inputRef.current);
+	// 	return document.activeElement && inputRef.current && document.activeElement.id === inputRef.current.id;
+	// },
+	// 	[document.activeElement, inputRef]
+	// );
+
 	useEffect(() => {
 		getList();
 	}, [searchSubstr]);
@@ -91,9 +106,40 @@ const BSelect = <T extends object, V = number>(props: IBSelectProps<T, V>) => {
 		onChange(null);
 	}, [extraParams]);
 
-	/* eslint-enable */
 
-	return <>{label}</>;
+	return (
+		<label data-testid={dataTestId} style={{ position: 'relative', width: '200px' }}>
+			{label}
+			<input
+				ref={inputRef}
+				id={inputId}
+				type='text'
+				value={searchSubstr}
+				onChange={(e) => setSearchSubstr(e.target.value)}
+				onFocus={() => setIsFocused(true)}
+				onBlur={() => setIsFocused(false)}
+			/>
+			{isFocused ? (
+				<ul
+					style={{
+						position: 'absolute',
+						top: '100%',
+						left: 0,
+						width: '100%',
+						height: '200px',
+						overflow: 'auto',
+						zIndex: 2,
+					}}
+				>
+					{data.map((elem) => (
+						<li key={String(reduceValue(elem))} data-testid={label + elem.id} onMouseDown={() => handleChange(elem)}>
+							{reduceListItem ? reduceListItem(elem) : (reduceElemName ? reduceElemName(elem) : '')}
+						</li>
+					))}
+				</ul>
+			) : null}
+		</label>
+	);
 };
 
 export default BSelect;

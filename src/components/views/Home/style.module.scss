@@ -1,13 +1,56 @@
-.elem {
-	width: 200px;
-	height: 300px;
-	background: rgb(72, 24, 24);
-	color: #fff;
-}
-
 .container {
-	max-height: 400px;
-	overflow-y: auto;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: sans-serif;
+
+	img {
+		width: 300px;
+		height: calc(300px * 607px / 586px);
+	}
+
+	.icon {
+		width: 30px;
+		margin: 0 5px 2px 0;
+	}
+
+	h1 {
+		margin-top: 30px;
+		text-align: center;
+		font-size: 52px;
+		font-weight: bold;
+		color: rgb(58, 52, 51);
+	}
+
+	a {
+		color: rgb(215, 113, 88);
+		text-decoration: none;
+	}
+
+	.links {
+		margin-top: 20px;
+		width: 350px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		a {
+			padding: 4px 16px 4px 10px;
+			border: 1px solid rgb(215, 113, 88);
+			border-radius: 4px;
+			display: flex;
+			align-items: center;
+			font-size: 18px;
+			line-height: 30px;
+		}
+	}
+
+	span {
+		margin-top: calc(100vh - 311px - 87px - 40px - 20px - 40px);
+	}
+
 
 	&::-webkit-scrollbar {
 		width: 3px;

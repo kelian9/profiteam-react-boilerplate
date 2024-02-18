@@ -1,0 +1,25 @@
+/**
+ *
+ * {{ properCase name }}
+ *
+ */
+
+{{#if memo}}
+import React, { memo } from 'react';
+{{else}}
+import React from 'react';
+{{/if}}
+
+interface I{{ properCase name }}Props {
+	propName: string;
+}
+
+const {{ properCase name }}: React.FC<I{{ properCase name }}Props> = () => {
+	return <div>{{ properCase name }}</div>;
+};
+
+{{#if memo}}
+export default memo({{ properCase name }});
+{{else}}
+export default {{ properCase name }};
+{{/if}}
