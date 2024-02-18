@@ -10,10 +10,6 @@
 	<a href="https://profiteam-react-boilerplate.gitbook.io/profiteam-react-boilerplate/" target="_blank"><strong>Documentation</strong></a>
 </p>
 
-<div align="center">
-  <sub>Created by <a href="https://t.me/kelian9">Profiteam</a>.</sub>
-</div>
-
 ## Features
 
 <dl>
