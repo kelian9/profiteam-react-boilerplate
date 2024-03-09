@@ -9,7 +9,6 @@ Just describe table fields. Use subclasses of [TableField](https://github.com/ke
 import React from 'react';
 import BTable from '@ui/BTable';
 import ITableField from '@ui/BTable/BtableBase/models/ITableField';
-import { FilterComponentField, FilterDatePickerField, FilterInputField, FilterSelectField } from '@ui/BFilter/FilterField';
 
 const MyComponent: React.FC = () = {
 	const actions = [
