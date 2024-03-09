@@ -1,5 +1,5 @@
 # BaseCrudPage
-
+BaseCrudPage allows you to quickly create a window with a standard implementation of the CRUD functionality.
 ## Example
 
 {% code title="index.tsx" overflow="wrap" lineNumbers="true" %}
