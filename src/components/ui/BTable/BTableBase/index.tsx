@@ -4,6 +4,7 @@ import chevronUpIcon from '../../../../assets/images/icons/chevron-up-icon.svg';
 import BPagination from '../../BPagination';
 import BTableNode from './BTableNode';
 import IBTableBaseProps from './models/IBTableBase';
+import { ITableField } from './models/ITableField';
 import styles from './style.module.scss';
 
 const BTableBase = <T extends object>(props: IBTableBaseProps<T>) => {
@@ -60,7 +61,7 @@ const BTableBase = <T extends object>(props: IBTableBaseProps<T>) => {
 			<table className={styles.defaultTable} style={style}>
 				<thead>
 					<tr>
-						{fields?.map((field, index) => (
+						{fields?.map((field: ITableField, index: number) => (
 							<th key={index} onClick={() => sorting(field.keyName)}>
 								<div className={styles.fieldHead}>
 									<span>{field.label}</span>

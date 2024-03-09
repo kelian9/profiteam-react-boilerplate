@@ -1,18 +1,14 @@
-<h1 align="center">Profiteam-react-boilerplate</h1>
+<h1 align="center">Profiteam React Boilerplate</h1>
 
 <div align="center">
 	<img src="https://github.com/kelian9/profiteam-react-boilerplate-brand/blob/main/assets/boilerplate.png" alt="profiteam react boilerplate banner" align="center" style="width: 140px; height: 148px;" />
 </div>
 
-<p align="center">🔥 <em>A powerful and production-ready foundation that helps you develop and maintain robust and efficient React applications. It provides a well-organized and modular structure, essential features, and best practices to accelerate your development process.</em></p>
+<p align="center">🚀 <em>A powerful and production-ready foundation that helps you develop and maintain robust and efficient React applications. It provides a well-organized and modular structure, essential features, and best practices to accelerate your development process.</em></p>
 
 <p align="center">
-	<a href="https://profiteam-react-boilerplate.gitbook.io/profiteam-react-boilerplate/" target="_blank"><strong> Documentation </strong></a>
+	<a href="https://profiteam-react-boilerplate.gitbook.io/profiteam-react-boilerplate/" target="_blank"><strong>Documentation</strong></a>
 </p>
-
-<div align="center">
-  <sub>Created by <a href="https://t.me/kelian9">Profiteam</a>.</sub>
-</div>
 
 ## Features
 
@@ -63,8 +59,18 @@ cd <YOUR_PROJECT_NAME>
 ```Shell
 npm run setup
 ```
-	in order to install dependencies and clean the git repo.<br />
-    _At this point you can run `npm start` to see the example app at `http://localhost:8080`._
+in order to install dependencies and clean the git repo.<br />
+At this point you can run
+```Shell
+npm start
+```
+to see the example app at `http://localhost:8080`.
+
+5.  Run
+```Shell
+npm run clean
+```
+to prepare the repository for your own project.
 
 Your boilerplate project is now ready for use! You can start building your application by modifying the files in the src directory. The boilerplate comes with basic routing and a simple Home component to get you started. To learn more about how to use React Boilerplate, check out the [documentation]((https://profiteam-react-boilerplate.gitbook.io/profiteam-react-boilerplate/))
 

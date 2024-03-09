@@ -1,7 +1,7 @@
-import FieldType from '@models/enums/FieldType';
+import FieldType from '@models/enums/FieldTypeEnum';
 
 export interface IGeneralFilterField<V> {
-	fieldType: FieldType;
+	fieldType?: FieldType;
 	id?: string;
 	name?: string;
 	keyName: string;
@@ -53,7 +53,7 @@ export interface IFilterInput extends IGeneralFilterField<string> {
 
 export interface IFilterFieldComponent {
 	component: (field: IGeneralFilterField<any> & { key: string }) => React.ReactNode;
-	fieldType?: FilterFieldType;
+	fieldType?: FieldType;
 	id?: string;
 	name?: string;
 	keyName: string;

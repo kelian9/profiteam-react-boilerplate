@@ -12,7 +12,7 @@ interface IBTableProps<T> {
 	footFields?: ITableFooterField[];
 	actions?: IAction[];
 	limit?: number;
-	rowClick?: ((item?: number | string) => void) | null;
+	rowClick?: (item?: number | string) => void;
 	listOptions?: ITableOptions;
 	style?: React.CSSProperties;
 	nodeStyle?: React.CSSProperties;
