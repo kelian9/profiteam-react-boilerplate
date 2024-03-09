@@ -44,17 +44,6 @@ table               | table params  | [```IEntityTable```](#IEntityTable)       
 forms        | form params  | [``` IEntityForm ```](#IEntityForm)           | -
 style              | container styles  | ```React.CSSProperties```          | undefined
 
-interface BaseCrudPageProps<T> {
-	methods: IMethods<T>;
-	fields: IEntityField;
-	queryFilter?: IQueryFilter;
-	filters?: IEntityFilter;
-	table?: IEntityTable;
-	forms?: IEntityForm;
-	style?: React.CSSProperties;
-}
-
-
 ### `IMethods`
 
 ```typescript
