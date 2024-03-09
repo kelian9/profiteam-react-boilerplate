@@ -73,13 +73,13 @@ export default MyComponent;
 
 Property           | Description                                 | Type                  | Default
 ------------------ | ------------------------------------------- | --------------------- | -------------------
-fields              | table fields  | [```ITableField[]```](#ITableField)          | -
+fields              | table fields  | [```ITableField[]```](#itablefield)          | -
 getData                 | data get method | ```(...args: any[]) => Promise<AxiosResponse<T[] | IErrorResponse> | T[]>```          | -
-footFields                 | table foot fields | [```ITableFooterField[]```](#ITableFooterField)            | -
-actions              | array of actions with data in the table  |[ ```IAction[]```](#IAction)         | -
+footFields                 | table foot fields | [```ITableFooterField[]```](#itablefooterfield)            | -
+actions              | array of actions with data in the table  |[ ```IAction[]```](#iaction)         | -
 limit               | number of rows in the table  | ```number```          | 10
 rowClick            |click on row  | ```(item?: number | string) => void``` | -
-listOptions        | table pagination and sorting options  | [``` ITableOptions ```](#ITableOptions)           | -
+listOptions        | table pagination and sorting options  | [``` ITableOptions ```](#itableoptions)           | -
 style              | container styles  | ```React.CSSProperties```          | undefined
 nodeStyle              | node styles  | ```React.CSSProperties```          | undefined
 

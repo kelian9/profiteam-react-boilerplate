@@ -6,7 +6,7 @@
 
 ```typescript
 import React from 'react';
-import EntityComponent from '@entities/EntityComponent'
+import Entity from '@entities/Entity'
 import BaseCrudPage from '@views/BaseCrudPage';
 
 const MyComponent: React.FC = () = {
@@ -14,12 +14,12 @@ const MyComponent: React.FC = () = {
 	return (
 		<>
 			<BaseCrudPage
-				methods={EntityComponent.methods}
-				fields={EntityComponent.fields}
-				queryFilter={EntityComponent.queryFilter}
-				filters={EntityComponent.filters}
-				table={EntityComponent.table}
-				forms={EntityComponent.forms}
+				methods={Entity.methods}
+				fields={Entity.fields}
+				queryFilter={Entity.queryFilter}
+				filters={Entity.filters}
+				table={Entity.table}
+				forms={Entity.forms}
 				style={style}
 			/>
 		</>
@@ -36,12 +36,12 @@ export default MyComponent;
 
 Property           | Description                                 | Type                  | Default
 ------------------ | ------------------------------------------- | --------------------- | -------------------
-methods              | crud methods  | [```IMethods<T>```](#IMethods<T>)          | -
-fields                 | fields for basecrudpage | [```IEntityField``` ]  (#IEntityField)        | -
-queryFilter                 | pagination params | [```IQueryFilter```](#IQueryFilter)            | -
-filters              | filters fields and save method  |[ ```IEntityFilter```](#IEntityFilter)         | -
-table               | table params  | [```IEntityTable```](#IEntityTable)          | -
-forms        | form params  | [``` IEntityForm ```](#IEntityForm)           | -
+methods              | crud methods  | [```IMethods<T>```](#imethods)          | -
+fields                 | fields for basecrudpage | [```IEntityField``` ](#ientityfield)        | -
+queryFilter                 | pagination params | [```IQueryFilter```](#iqueryfilter)            | -
+filters              | filters fields and save method  |[ ```IEntityFilter```](#ientityfilter)         | -
+table               | table params  | [```IEntityTable```](#ientitytable)          | -
+forms        | form params  | [``` IEntityForm ```](#ientityform)           | -
 style              | container styles  | ```React.CSSProperties```          | undefined
 
 ### `IMethods`
